@@ -1,12 +1,10 @@
 package spring.core.session3;
 
-import java.util.List;
-
 import lombok.Data;
 
 @Data
-public class Customer {
+public class Employee {
 	private Integer id;
 	private String name;
-	private List<Product> products;
+	private Title title;
 }

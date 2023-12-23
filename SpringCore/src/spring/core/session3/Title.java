@@ -3,9 +3,8 @@ package spring.core.session3;
 import lombok.Data;
 
 @Data
-public class Product {
+public class Title {
 	private Integer id;
 	private String name;
-	private Double price;
-	private Integer amount;
+	private Integer salary;
 }
