@@ -2,6 +2,9 @@ package spring.core.session3;
 
 import java.util.List;
 
+import lombok.Data;
+
+@Dataa
 public class Customer {
 	private Integer id;
 	private String name;
