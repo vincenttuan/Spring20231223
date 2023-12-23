@@ -3,6 +3,7 @@ package spring.core.session3.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Scope;
 
 import spring.core.session3.bean.Employee;
 import spring.core.session3.bean.Job;
@@ -48,7 +49,8 @@ public class SpringJavaConfig {
 		return employee;
 	}
 	
-	@Bean(name = "job")
+	@Bean(name = {"job", "myJob"})
+	@Scope("singleton") // prototype
     public Job job() {
         // 配置 work 的相關屬性
         return new Job();
