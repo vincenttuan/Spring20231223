@@ -18,8 +18,11 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 	
 	<!-- 配置設定 -->	
+	<!-- 
+		scope="singleton" 單一實體(預設)
+		scope="prototype" 多個實體
+	 -->
+	<bean id="user" scope="singleton" class="spring.core.session1.bean.User"  />
 	
-	
-		
 		
 </beans>		 
