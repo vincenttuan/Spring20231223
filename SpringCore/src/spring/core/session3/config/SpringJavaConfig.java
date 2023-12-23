@@ -1,12 +1,14 @@
 package spring.core.session3.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import spring.core.session3.bean.Employee;
 import spring.core.session3.bean.Title;
 
 @Configuration // Spring Java 配置檔
+@ComponentScan(basePackages = "spring.core.session3")
 public class SpringJavaConfig {
 	
 	@Bean
