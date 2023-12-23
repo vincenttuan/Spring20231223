@@ -23,7 +23,15 @@ public class Test {
 		Job job = ctx.getBean("job", Job.class);
 		System.out.println(job);
 		
+		// 手動注入 employee 與 job
 		Project project = ctx.getBean("project", Project.class);
+		project.setEmployee(employee1);
+		project.setJob(job);
 		System.out.println(project);
+		
+		// 自動注入 employee 與 job
+		Project project2 = ctx.getBean("project", Project.class);
+		System.out.println(project2);
+		
 	}
 }
