@@ -10,9 +10,13 @@ public class Test {
 		User user = new User();
 		user.setId(1);
 		user.setName("John");
-		user.setScore(new Random().nextInt(101));
-		
+		user.setScore(100);
 		System.out.println(user);
+		
+		User user2 = new User(1, "John", 100);
+		System.out.println(user2);
+		
+		System.out.println(user.equals(user2));
 	}
 
 }
