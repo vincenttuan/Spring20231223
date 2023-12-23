@@ -17,6 +17,14 @@ public class Test {
 		System.out.println(user2);
 		
 		System.out.println(user.equals(user2));
+		
+		User user3 = User.builder()
+						 .id(2)
+						 .name("Mary")
+						 .score(90)
+						 .build();
+		
+		System.out.println(user3);
 	}
 
 }
