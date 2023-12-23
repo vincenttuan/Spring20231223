@@ -5,6 +5,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 import spring.core.session3.bean.Employee;
+import spring.core.session3.bean.Job;
 import spring.core.session3.bean.Title;
 
 @Configuration // Spring Java 配置檔
@@ -46,5 +47,11 @@ public class SpringJavaConfig {
 		employee.setTitle(title2());
 		return employee;
 	}
+	
+	@Bean(name = "job")
+    public Job job() {
+        // 配置 work 的相關屬性
+        return new Job();
+    }
 	
 }
