@@ -16,7 +16,11 @@ public class Test {
 		Employee employee2 = ctx.getBean("employee2", Employee.class);
 		System.out.println(employee2);
 		
-		Job job = ctx.getBean("work", Job.class);
+		Job work = ctx.getBean("work", Job.class);
+		System.out.println(work);
+		
+		Job job = ctx.getBean("job", Job.class);
 		System.out.println(job);
+		
 	}
 }
