@@ -4,7 +4,7 @@ import java.util.List;
 
 import lombok.Data;
 
-@Dataa
+@Data
 public class Customer {
 	private Integer id;
 	private String name;
