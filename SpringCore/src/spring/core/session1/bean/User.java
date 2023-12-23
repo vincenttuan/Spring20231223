@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-//@NoArgsConstructor
+@NoArgsConstructor
 @AllArgsConstructor
 @Builder
 public class User {
@@ -14,7 +14,4 @@ public class User {
 	private String name;
 	private Integer score;
 	
-	public User() {
-		System.out.println("執行 User() 建構子");
-	}
 }

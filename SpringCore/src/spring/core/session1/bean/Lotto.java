@@ -12,4 +12,5 @@ public class Lotto {
 		System.out.println("執行 Lotto() 建構子");
 		number = new Random().nextInt(1000);
 	}
+	
 }

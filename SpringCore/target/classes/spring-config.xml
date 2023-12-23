@@ -22,7 +22,7 @@
 		scope="singleton" 單一實體(預設)
 		scope="prototype" 多個實體
 	 -->
-	<bean id="user" scope="prototype" class="spring.core.session1.bean.User">
+	<bean id="user" class="spring.core.session1.bean.User">
 		<!-- DI 注入(方法注入)  -->
 		<property name="id">
 			<value>1</value>
@@ -35,7 +35,7 @@
 		</property>
 	</bean>
 	
-	<bean id="user2" scope="prototype" class="spring.core.session1.bean.User">
+	<bean id="user2" class="spring.core.session1.bean.User">
 		<!-- DI 注入(建構子注入)  -->
 		<constructor-arg index="0" value="2" />
 		<constructor-arg index="1" value="Mary" />
@@ -43,10 +43,10 @@
 	</bean>
 	
 	<!-- DI 注入(方法注入 p 簡化版)  -->
-	<bean id="user3" scope="prototype" class="spring.core.session1.bean.User" p:id="3" p:name="Jack" p:score="80" />
+	<bean id="user3" class="spring.core.session1.bean.User" p:id="3" p:name="Jack" p:score="80" />
 	
 	<!-- DI 注入(建構子注入 c 簡化版)  -->
-	<bean id="user4" scope="prototype" class="spring.core.session1.bean.User" c:id="4" c:name="Rose" c:score="70" />
+	<bean id="user4" class="spring.core.session1.bean.User" c:id="4" c:name="Rose" c:score="70" />
 	
 	<bean id="lotto" class="spring.core.session1.bean.Lotto" />
 		
