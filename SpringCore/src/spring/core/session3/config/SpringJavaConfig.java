@@ -29,7 +29,7 @@ public class SpringJavaConfig {
 		return title;
 	}
 	
-	@Bean
+	@Bean(name = "emp1")
 	public Employee employee1() {
 		Employee employee = new Employee();
 		employee.setId(101);
