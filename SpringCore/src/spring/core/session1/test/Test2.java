@@ -10,7 +10,7 @@ public class Test2 {
 	public static void main(String[] args) {
 		// 指定 xml 設定檔
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-config.xml"); 
-		User user = ctx.getBean(User.class);
+		User user = ctx.getBean(User.class); // IOC
 		System.out.println(user);
 	}
 

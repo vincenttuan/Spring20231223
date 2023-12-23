@@ -22,7 +22,25 @@
 		scope="singleton" 單一實體(預設)
 		scope="prototype" 多個實體
 	 -->
-	<bean id="user" scope="singleton" class="spring.core.session1.bean.User"  />
+	<bean id="user" scope="singleton" class="spring.core.session1.bean.User">
+		<!-- DI 注入(方法注入)  -->
+		<property name="id">
+			<value>1</value>
+		</property>
+		<property name="name">
+			<value>John</value>
+		</property>
+		<property name="score">
+			<value>100</value>
+		</property>
+	</bean>
+	
+	<bean id="user2" class="spring.core.session1.bean.User">
+		<!-- DI 注入(建構子注入)  -->
+		<constructor-arg index="0" value="2" />
+		<constructor-arg index="1" value="Mary" />
+		<constructor-arg index="2" value="90" />
+	</bean>
 	
 		
 </beans>		 
