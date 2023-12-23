@@ -42,5 +42,11 @@
 		<constructor-arg index="2" value="90" />
 	</bean>
 	
+	<!-- DI 注入(方法注入 p 簡化版)  -->
+	<bean id="user3" class="spring.core.session1.bean.User" p:id="3" p:name="Jack" p:score="80" />
+	
+	<!-- DI 注入(建構子注入 c 簡化版)  -->
+	<bean id="user4" class="spring.core.session1.bean.User" c:id="4" c:name="Rose" c:score="70" />
+	
 		
 </beans>		 

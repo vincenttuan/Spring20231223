@@ -14,6 +14,10 @@ public class Test2 {
 		System.out.println(user);
 		User user2 = ctx.getBean("user2", User.class);
 		System.out.println(user2);
+		User user3 = ctx.getBean("user3", User.class);
+		System.out.println(user3);
+		User user4 = ctx.getBean("user4", User.class);
+		System.out.println(user4);
 	}
 
 }
