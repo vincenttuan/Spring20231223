@@ -1,4 +1,4 @@
-package spring.core.session3;
+package spring.core.session3.bean;
 
 import lombok.Data;
 
