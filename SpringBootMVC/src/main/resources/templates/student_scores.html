@@ -11,6 +11,15 @@
     	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     	<!-- 引入 DataTables -->
     	<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    	
+    	<!-- 引入 DataTables 其他功能 -->
+    	<script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/dataTables.buttons.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.html5.min.js"></script>
+        <script type="text/javascript" src="https://cdn.datatables.net/buttons/2.4.2/js/buttons.print.min.js"></script>
+        
     	<script type="text/javascript">
 			// 當文件載入完成後
 			$(document).ready(function() {
@@ -18,7 +27,11 @@
 					// 設定語言
 					"language": {
 						"url": "/js/chinese-taiwan.json"
-					}
+					},
+					// 功能鍵
+					buttons: [
+			            'copy', 'csv', 'excel', 'pdf', 'print'
+			        ]
 				});
 			});
 		</script>
