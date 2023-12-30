@@ -71,7 +71,7 @@ public class HelloController {
 		
 		Double average = scores.stream().sorted().skip(2).limit(6).collect(Collectors.averagingDouble(Double::doubleValue));
 		
-		return "score: " + average;
+		return "成績: " + average;
 		
 	}
 	
