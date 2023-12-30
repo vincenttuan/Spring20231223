@@ -1,6 +1,8 @@
 package com.mvc.lab1.controller;
 
 import java.util.Date;
+import java.util.IntSummaryStatistics;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -45,6 +47,17 @@ public class HelloController {
 		String message = String.format("bmi = %.2f", w / Math.pow(h/100, 2));
 		return message;
 	}
+	
+	// 4. 多筆資料
+	// http://localhost:8080/hello/age?age=17&age=19&age=25
+	// 取得統計資料, count, max, min, avg, sum
+	@GetMapping("/age")
+	@ResponseBody
+	public String getAgeInfo(@RequestParam("age") List<Integer> ages) {
+		IntSummaryStatistics stat = ages.stream().mapToInt(Integer::intValue).summaryStatistics();
+		return stat.toString();
+	}
+	
 	
 	
 	
