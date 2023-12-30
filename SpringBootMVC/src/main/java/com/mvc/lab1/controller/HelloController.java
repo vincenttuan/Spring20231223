@@ -31,6 +31,11 @@ public class HelloController {
 		return message;
 	}
 	
+	// 3. Lab 練習
+	// http://localhost:8080/hello/bmi?h=170&w=60 -> 印出 bmi = 20.76
+	// http://localhost:8080/hello/bmi -> No data
+	
+	
 	
 	
 }
