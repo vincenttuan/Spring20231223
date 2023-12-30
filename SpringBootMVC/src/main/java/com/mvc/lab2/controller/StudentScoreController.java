@@ -15,6 +15,8 @@ import com.github.javafaker.Faker;
 import com.mvc.lab2.entity.StudentScore;
 import com.mvc.lab2.repository.StudentScoreRepository;
 
+import jakarta.transaction.Transactional;
+
 @Controller
 @RequestMapping("/student")
 public class StudentScoreController {
@@ -56,11 +58,12 @@ public class StudentScoreController {
 	// 更新名字
 	@PutMapping("/{id}")
 	@ResponseBody
+	@Transactional
 	public String updateStudentScore(@PathVariable("id") Integer id, String name) {
 		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
 		studentScoreOpt.ifPresent(studentScore -> {
 			studentScore.setName(name); // 修改名字
-			studentScoreRepository.saveAndFlush(studentScore); // 對資料庫進行修改
+			//studentScoreRepository.saveAndFlush(studentScore); // 對資料庫進行修改
 		});
 		
 		return "修改成功";
