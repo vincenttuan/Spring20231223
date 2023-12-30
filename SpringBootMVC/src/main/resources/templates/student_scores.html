@@ -24,15 +24,15 @@
 			// 當文件載入完成後
 			$(document).ready(function() {
 				$('.pure-table').DataTable({
-					// 設定語言
+					// 功能鍵
+					//dom: 'Bfrtip',
+					//buttons: [
+			        //    'copy', 'csv', 'excel', 'pdf', 'print'
+			        //],
+			     	// 設定語言
 					"language": {
 						"url": "/js/chinese-taiwan.json"
-					},
-					// 功能鍵
-					dom: 'Bfrtip',
-					buttons: [
-			            'copy', 'csv', 'excel', 'pdf', 'print'
-			        ]
+					}
 				});
 			});
 		</script>
