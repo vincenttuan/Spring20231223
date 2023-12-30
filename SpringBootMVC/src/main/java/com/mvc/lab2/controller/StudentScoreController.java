@@ -6,6 +6,8 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -41,8 +43,24 @@ public class StudentScoreController {
 	
 	@GetMapping("/{id}")
 	@ResponseBody
-	public Optional<StudentScore> getStudentScoreById(Integer id) {
+	public Optional<StudentScore> getStudentScoreById(@PathVariable("id") Integer id) {
 		return studentScoreRepository.findById(id);
 	}
+	
+	@GetMapping("/")
+	@ResponseBody
+	public String findAllStudentScores() {
+		return studentScoreRepository.findAll().toString();
+	}
+	
+	// 更新名字
+	@PutMapping("/{id}")
+	@ResponseBody
+	public String updateStudentScore(@PathVariable("id") Integer id, String name) {
+		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
+		studentScoreOpt.ifPresent(studentScore -> studentScore.setName(name));
+		return "修改成功";
+	}
+	
 	
 }
