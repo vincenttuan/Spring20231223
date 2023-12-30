@@ -1,5 +1,6 @@
 package com.mvc.lab2.controller;
 
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class StudentScoreController {
 		studentScoreRepository.save(studentScore);
 		
 		return studentScore + " 新增完畢";
+	}
+	
+	@GetMapping("/{id}")
+	@ResponseBody
+	public Optional<StudentScore> getStudentScoreById(Integer id) {
+		return studentScoreRepository.findById(id);
 	}
 	
 }
