@@ -11,6 +11,14 @@
     	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.css">
     	<!-- 引入 DataTables -->
     	<script type="text/javascript" src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+    	<script type="text/javascript">
+			// 當文件載入完成後
+			$(document).ready(function() {
+				$('.pure-table').DataTable({
+					
+				});
+			});
+		</script>
 	</head>
 	<body style="padding: 15px">
 		<div class="pure-form">
@@ -44,6 +52,5 @@
 				
 			</fieldset>
 		</div>
-		
 	</body>
 </html>
