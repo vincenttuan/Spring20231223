@@ -62,6 +62,7 @@ public class StudentScoreController {
 			studentScore.setName(name); // 修改名字
 			studentScoreRepository.saveAndFlush(studentScore); // 對資料庫進行修改
 		});
+		
 		return "修改成功";
 	}
 	
