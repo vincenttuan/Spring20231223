@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mvc.lab1.entity.Person;
+
 @Controller
 @RequestMapping("/hello")
 public class HelloController {
@@ -84,6 +86,13 @@ public class HelloController {
 		return "person map = " + personMap;
 	}
 	
+	// 7. 得到多筆資料轉指定物件
+	// http://localhost:8080/hello/person?name=John&age=18&score=80.5&pass=true
+	@GetMapping("/person")
+	@ResponseBody
+	public String getPerson(@RequestParam Person person) {
+		return "person object = " + person;
+	}
 	
 	
 }
