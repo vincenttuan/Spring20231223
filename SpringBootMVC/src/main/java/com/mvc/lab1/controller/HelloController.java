@@ -33,13 +33,13 @@ public class HelloController {
 	
 	// 3. Lab 練習
 	// http://localhost:8080/hello/bmi?h=170&w=60 -> 印出 bmi = 20.76
-	// http://localhost:8080/hello/bmi -> No data
-	@GetMapping(value = "/bmi")
+	// http://localhost:8080/hello/bmi -> 參數錯誤
+	@GetMapping(value = "/bmi", produces = {"text/plain;charset=utf-8"})
 	@ResponseBody
 	public String bmi(@RequestParam(value = "h", required = false, defaultValue = "-1") Double h,
 					  @RequestParam(value = "w", required = false, defaultValue = "-1") Double w) {
 		if(h < 0 || w < 0) {
-			return "No data";
+			return "參數錯誤";
 		}
 		
 		String message = String.format("bmi = %.2f", w / Math.pow(h/100, 2));
