@@ -58,7 +58,10 @@ public class StudentScoreController {
 	@ResponseBody
 	public String updateStudentScore(@PathVariable("id") Integer id, String name) {
 		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
-		studentScoreOpt.ifPresent(studentScore -> studentScore.setName(name));
+		studentScoreOpt.ifPresent(studentScore -> {
+			studentScore.setName(name); // 修改名字
+			studentScoreRepository.saveAndFlush(studentScore); // 對資料庫進行修改
+		});
 		return "修改成功";
 	}
 	
