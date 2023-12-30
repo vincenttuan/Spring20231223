@@ -30,7 +30,8 @@
 							<td th:text="${score.englishScore}"></td>
 							<td th:text="${score.mathScore}"></td>
 							<td th:text="${score.totalScore}"></td>
-							<td th:text="${score.averageScore}"></td>
+							<!-- (分數, 最小整數位, 小數位數) -->
+							<td th:text="${#numbers.formatDecimal(score.averageScore, 1, 1)}"></td>
 						</tr>
 					</tbody>
 				</table>
