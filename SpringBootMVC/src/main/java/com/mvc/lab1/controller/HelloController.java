@@ -58,6 +58,9 @@ public class HelloController {
 		return stat.toString();
 	}
 	
+	// 5. Lab 多筆資料 (奧運跳水比賽)
+	// 成績算法: 10 個分數, 將最高的 2 個分數與最低的 2 個分數刪除, 其餘 6 個取平均
+	// http://localhost:8080/hello/score?score=10.0&score=3.8&score=8.5&score=7.4&score=8.8&score=7.8&score=9.0&score=6.5&score=7.0&score=9.8
 	
 	
 	
