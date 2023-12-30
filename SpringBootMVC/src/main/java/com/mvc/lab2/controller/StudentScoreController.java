@@ -1,10 +1,12 @@
 package com.mvc.lab2.controller;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -50,9 +52,13 @@ public class StudentScoreController {
 	}
 	
 	@GetMapping("/")
-	@ResponseBody
-	public String findAllStudentScores() {
-		return studentScoreRepository.findAll().toString();
+	//@ResponseBody
+	public String findAllStudentScores(Model model) {
+		List<StudentScore> scores = studentScoreRepository.findAll();
+		// 將 scores 資料放到 model 物件中
+		model.addAttribute("scores", scores);
+		// 透過指定 html 來渲染資料
+		return "student_scores";
 	}
 	
 	// 更新名字
