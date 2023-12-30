@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -90,9 +91,24 @@ public class HelloController {
 	// http://localhost:8080/hello/person?name=John&age=18&score=80.5&pass=true
 	@GetMapping("/person")
 	@ResponseBody
-	public String getPerson(@RequestParam Person person) {
+	public String getPerson(Person person) {
 		return "person object = " + person;
 	}
 	
+	// 8. 路徑參數
+	// http://localhost:8080/hello/person/1
+	// http://localhost:8080/hello/person/3
+	@GetMapping("/person/{id}")
+	@ResponseBody
+	public Person getPersonById(@PathVariable("id") Integer id) {
+		List<Person> persons = List.of(
+				new Person("John", 18, 80.5, true),
+				new Person("Mary", 19, 70.5, true),
+				new Person("Jack", 20, 60.5, true),
+				new Person("Rose", 21, 50.5, false),
+				new Person("Helen", 22, 40.5, false));
+		
+		return persons.get(id);
+	}
 	
 }
