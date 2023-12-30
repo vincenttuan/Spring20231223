@@ -3,6 +3,7 @@ package com.mvc.lab1.controller;
 import java.util.Date;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
@@ -73,6 +74,14 @@ public class HelloController {
 		
 		return "成績: " + average;
 		
+	}
+	
+	// 6. 得到多筆資料轉 Map
+	// http://localhost:8080/hello/personMap?name=John&age=18&score=80.5&pass=true
+	@GetMapping("/personMap")
+	@ResponseBody
+	public String getPersonMap(@RequestParam Map<String, String> personMap) {
+		return "person map = " + personMap;
 	}
 	
 	
