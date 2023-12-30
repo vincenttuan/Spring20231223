@@ -3,6 +3,7 @@ package com.mvc.lab1.controller;
 import java.util.Date;
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,7 +62,18 @@ public class HelloController {
 	// 5. Lab 多筆資料 (奧運跳水比賽)
 	// 成績算法: 10 個分數, 將最高的 2 個分數與最低的 2 個分數刪除, 其餘 6 個取平均
 	// http://localhost:8080/hello/score?score=10.0&score=3.8&score=8.5&score=7.4&score=8.8&score=7.8&score=9.0&score=6.5&score=7.0&score=9.8
-	
+	@GetMapping("/score")
+	@ResponseBody
+	public String getScore(@RequestParam("score") List<Double> scores) {
+		if(scores.size() != 10) {
+			return "資料不足或過多無法計算";
+		}
+		
+		Double average = scores.stream().sorted().skip(2).limit(6).collect(Collectors.averagingDouble(Double::doubleValue));
+		
+		return "score: " + average;
+		
+	}
 	
 	
 }
