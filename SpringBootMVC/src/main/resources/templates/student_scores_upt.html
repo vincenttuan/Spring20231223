@@ -9,11 +9,16 @@
 			function uptMethodValue() {
 				document.getElementById('_method').value = 'DELETE';
 			}
+			
+			function checkValue() {
+				// 檢查欄位資料是否都有撰寫 ...
+				return true;
+			}
 		</script>
 	</head>
 	<body style="padding: 15px">
 		<div th:text="${student_score}"></div>
-		<form class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}" >
+		<form onsubmit="return checkValue();" class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}" >
 			<input type="hidden" id="_method" name="_method" value="PUT">
 			<input type="hidden" id="id" name="id" th:value="${student_score.id}">
 			姓名: <input type="text" id="name" name="name" th:value="${student_score.name}"><p />
