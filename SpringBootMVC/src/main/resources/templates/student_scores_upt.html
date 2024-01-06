@@ -21,10 +21,10 @@
 		<form onsubmit="return checkValue();" class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}" >
 			<input type="hidden" id="_method" name="_method" value="PUT">
 			<input type="hidden" id="id" name="id" th:value="${student_score.id}">
-			姓名: <input type="text" id="name" name="name" th:value="${student_score.name}"><p />
-			國文: <input type="number" id="chineseScore" name="chineseScore" th:value="${student_score.chineseScore}"><p />
-			英文: <input type="number" id="englishScore" name="englishScore" th:value="${student_score.englishScore}"><p />
-			數學: <input type="number" id="mathScore" name="mathScore" th:value="${student_score.mathScore}"><p />
+			姓名: <input type="text" id="name" name="name" th:value="${student_score.name}" required><p />
+			國文: <input type="number" id="chineseScore" name="chineseScore" th:value="${student_score.chineseScore}" min="0" max="100" required><p />
+			英文: <input type="number" id="englishScore" name="englishScore" th:value="${student_score.englishScore}" min="0" max="100" required><p />
+			數學: <input type="number" id="mathScore" name="mathScore" th:value="${student_score.mathScore}" min="0" max="100" required><p />
 			<button type="submit" class="pure-button pure-button-primary">修改</button>
 			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
