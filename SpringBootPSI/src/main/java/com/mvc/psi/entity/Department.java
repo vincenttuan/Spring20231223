@@ -13,10 +13,13 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
 @Table(name = "department")
-@Data
+@Getter
+@Setter
 public class Department {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,7 +35,7 @@ public class Department {
 	// 中間表格的欄位名稱為 department_id, employee_id
 	// 中間表格的欄位名稱可以透過 @JoinColumn(name = "department_id") 來指定
 	// fetch = FetchType.EAGER 表示在查詢部門時, 連同員工也要一併查詢
-	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "department")
 	@OrderBy("id ASC")
 	private Set<Employee> employees = new LinkedHashSet<>();
 }

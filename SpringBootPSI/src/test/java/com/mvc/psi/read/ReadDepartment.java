@@ -14,6 +14,7 @@ import com.mvc.psi.repository.DepartmentRepository;
 import jakarta.transaction.Transactional;
 
 @SpringBootTest
+@Transactional
 public class ReadDepartment {
 	
 	@Autowired
@@ -22,13 +23,15 @@ public class ReadDepartment {
 	@Test
 	public void read() {
 		List<Department> departments = departmentRepository.findAll();
+		//System.out.println(departments);
 		
-		departments.forEach(dept -> {
+		for(Department dept : departments) {
 			System.out.print("部門名稱: " + dept.getName() + " 員工: ");
 			Set<Employee> employees = dept.getEmployees();
 			employees.forEach(emp -> System.out.print(emp.getName() + " "));
 			System.out.println();
-		});
+		}
+		
 		
 	}
 	
