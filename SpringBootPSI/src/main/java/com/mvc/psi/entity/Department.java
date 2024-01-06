@@ -23,6 +23,7 @@ public class Department {
 	@Column(unique = true, nullable = false)
 	private String name;
 	
-	@OneToMany
+	// mappedBy = "department" : 這個屬性是由 Employee 的 department 屬性來對應
+	@OneToMany(mappedBy = "department")
 	private Set<Employee> employees = new LinkedHashSet<>();
 }
