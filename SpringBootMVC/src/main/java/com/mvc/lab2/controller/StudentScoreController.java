@@ -68,14 +68,16 @@ public class StudentScoreController {
 	@PutMapping("/{id}")
 	@ResponseBody
 	@Transactional
-	public String updateStudentScore(@PathVariable("id") Integer id, String name) {
+	public String updateStudentScore(@PathVariable("id") Integer id, StudentScore studentScore) {
 		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
-		studentScoreOpt.ifPresent(studentScore -> {
-			studentScore.setName(name); // 修改名字
-			//studentScoreRepository.saveAndFlush(studentScore); // 對資料庫進行修改
-		});
+		if(studentScoreOpt.isPresent()) {
+			// 因為 studentScore 含有 id, 所以會進行更新
+			// 若無 id 則會進行新增
+			studentScoreRepository.save(studentScore); 
+			return "修改成功";
+		}
+		return "修改失敗";
 		
-		return "修改成功";
 	}
 	
 	
