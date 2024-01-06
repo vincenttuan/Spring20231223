@@ -6,7 +6,11 @@
 	    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 		<title>修改學生成績</title>
 		<script>
+			function uptMethodValue() {
+				console.log('1');
+			}
 			function deleteItem() {
+				console.log('2');
 				return false;
 			}
 		</script>
@@ -21,7 +25,7 @@
 			英文: <input type="number" id="englishScore" name="englishScore" th:value="${student_score.englishScore}"><p />
 			數學: <input type="number" id="mathScore" name="mathScore" th:value="${student_score.mathScore}"><p />
 			<button type="submit" class="pure-button pure-button-primary">修改</button>
-			<button type="submit" class="pure-button pure-button-primary">刪除</button>
+			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
 	</body>
 </html>
