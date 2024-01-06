@@ -56,7 +56,7 @@
 					<tbody>
 						<tr th:each="score, state : ${scores}">
 							<td th:text="${state.count}"></td>
-							<td th:text="${score.name}"></td>
+							<td th:text="${score.name}" th:onclick="|window.location.href='@{/student/}${score.id}'|"></td>
 							<td th:text="${score.chineseScore}"></td>
 							<td th:text="${score.englishScore}"></td>
 							<td th:text="${score.mathScore}"></td>
