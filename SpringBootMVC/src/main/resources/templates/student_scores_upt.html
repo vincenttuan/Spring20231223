@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:sp="http://www.springframework.org/tags/form">
+      xmlns:form="http://www.springframework.org/tags/form">
+
 	<head>
 		<meta charset="UTF-8">
 		<!-- 引入 PureCSS -->
@@ -8,7 +9,8 @@
 		<title>修改學生成績</title>
 		<script>
 			function uptMethodValue() {
-				document.getElementById('_method').value = 'DELETE';
+				document.getElementById('_method1').value = 'DELETE';
+				document.getElementById('_method2').value = 'DELETE';
 			}
 			
 			function checkValue() {
@@ -18,29 +20,31 @@
 		</script>
 	</head>
 	<body style="padding: 15px">
-		<div th:text="${student_score}"></div>
+		<div th:text="${studentScore}"></div>
 		<h2>一般表單渲染</h2>
-		<form onsubmit="return checkValue();" class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}" >
-			<input type="hidden" id="_method" name="_method" value="PUT">
-			<input type="hidden" id="id" name="id" th:value="${student_score.id}">
-			姓名: <input type="text" id="name" name="name" th:value="${student_score.name}" required><p />
-			國文: <input type="number" id="chineseScore" name="chineseScore" th:value="${student_score.chineseScore}" min="0" max="100" required><p />
-			英文: <input type="number" id="englishScore" name="englishScore" th:value="${student_score.englishScore}" min="0" max="100" required><p />
-			數學: <input type="number" id="mathScore" name="mathScore" th:value="${student_score.mathScore}" min="0" max="100" required><p />
+		<form onsubmit="return checkValue();" class="pure-form" method="post" th:action="@{/student/{id}(id=${studentScore.id})}" >
+			<input type="hidden" id="_method1" name="_method" value="PUT">
+			<input type="hidden" id="id" name="id" th:value="${studentScore.id}">
+			姓名: <input type="text" id="name" name="name" th:value="${studentScore.name}" required><p />
+			國文: <input type="number" id="chineseScore" name="chineseScore" th:value="${studentScore.chineseScore}" min="0" max="100" required><p />
+			英文: <input type="number" id="englishScore" name="englishScore" th:value="${studentScore.englishScore}" min="0" max="100" required><p />
+			數學: <input type="number" id="mathScore" name="mathScore" th:value="${studentScore.mathScore}" min="0" max="100" required><p />
 			<button type="submit" class="pure-button pure-button-primary">修改</button>
 			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
 		<hr>
 		<h2>SpringForm 表單渲染</h2>
-		<sp:form modelAttribute="student_score" class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}">
-			<input type="hidden" id="_method" name="_method" value="PUT" />
-			<input type="hidden" id="id" name="id" />
-			姓名: <sp:input type="text" path="name" required /><p />
-			國文: <sp:input type="number" path="chineseScore" min="0" max="100" required /><p />
-			英文: <sp:input type="number" path="englishScore" min="0" max="100" required /><p />
-			數學: <sp:input type="number" path="mathScore" min="0" max="100" required><p />
-			<button type="submit" class="pure-button pure-button-primary">修改</button>
-			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
-		</sp:form>
+		<form th:action="@{/student/{id}(id=${studentScore.id})}" 
+			  th:object="${studentScore}"
+			  method="post" class="pure-form">
+		    <input type="hidden" id="_method2" name="_method" value="PUT"/>
+		    <input type="hidden" th:field="*{id}" />
+		    姓名: <input type="text" th:field="*{name}" required /><p/>
+		    國文: <input type="number" th:field="*{chineseScore}" min="0" max="100" required /><p/>
+		    英文: <input type="number" th:field="*{englishScore}" min="0" max="100" required /><p/>
+		    數學: <input type="number" th:field="*{mathScore}" min="0" max="100" required /><p/>
+		    <button type="submit" class="pure-button pure-button-primary">修改</button>
+		    <button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
+		</form>
 	</body>
 </html>
