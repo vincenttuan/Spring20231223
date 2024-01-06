@@ -47,5 +47,7 @@ public class CreateEmployee {
 		employeeRepository.save(emp2);
 		employeeRepository.save(emp3);
 		employeeRepository.save(emp4);
+		
+		System.out.println("Save OK");
 	}
 }
