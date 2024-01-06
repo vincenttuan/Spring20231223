@@ -64,7 +64,7 @@ public class StudentScoreController {
 		return "student_scores";
 	}
 	
-	// 更新名字
+	// 更新資料
 	@PutMapping("/{id}")
 	@ResponseBody
 	@Transactional

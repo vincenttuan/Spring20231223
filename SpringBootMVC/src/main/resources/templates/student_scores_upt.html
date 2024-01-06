@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div th:text="${student_score}"></div>
-</body>
+	<head>
+	<meta charset="UTF-8">
+	<!-- 引入 PureCSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
+	<title>修改學生成績</title>
+	</head>
+	<body style="padding: 15px">
+		<div th:text="${student_score}"></div>
+		<form class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}" >
+			
+		</form>
+		
+	</body>
 </html>
