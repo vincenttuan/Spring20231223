@@ -14,7 +14,6 @@ import com.mvc.psi.repository.DepartmentRepository;
 import jakarta.transaction.Transactional;
 
 @SpringBootTest
-@Transactional
 public class ReadDepartment {
 	
 	@Autowired
