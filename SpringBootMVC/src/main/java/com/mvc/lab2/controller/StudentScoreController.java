@@ -74,9 +74,9 @@ public class StudentScoreController {
 			// 因為 studentScore 含有 id, 所以會進行更新
 			// 若無 id 則會進行新增
 			studentScoreRepository.save(studentScore); 
-			return "<a href='./'>修改成功</a>";
+			return "<a href='./' title='按我一下返回主畫面'>修改成功</a>";
 		}
-		return "<a href='./'>修改失敗</a>";
+		return "<a href='./' title='按我一下返回主畫面'>修改失敗</a>";
 		
 	}
 	
