@@ -1,9 +1,12 @@
 package com.mvc.psi.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -21,7 +24,11 @@ public class Employee {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // 員工序號
 	
+	//@Column(name = "name", unique = false, nullable = true, length = 255) // 預設(可不寫)
+	@Column(name = "name", unique = true, nullable = false, length = 50)
 	private String name; // 員工姓名
 	
-	
+	@JoinColumn(name = "department_id") // 外鍵(部門序號)
+	@ManyToOne(optional = false) // 該欄位不允許為 null 
+	private Department department;
 }
