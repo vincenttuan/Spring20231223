@@ -9,6 +9,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.OrderBy;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -30,5 +31,6 @@ public class Department {
 	// 中間表格的欄位名稱為 department_id, employee_id
 	// 中間表格的欄位名稱可以透過 @JoinColumn(name = "department_id") 來指定
 	@OneToMany(mappedBy = "department")
+	@OrderBy("id ASC")
 	private Set<Employee> employees = new LinkedHashSet<>();
 }
