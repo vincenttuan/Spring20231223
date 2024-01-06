@@ -21,27 +21,36 @@
 	<body style="padding: 15px">
 		<div th:text="${studentScore}"></div>
 		<h2>一般表單渲染</h2>
-		<form onsubmit="return checkValue();" class="pure-form" method="post" th:action="@{/student/{id}(id=${studentScore.id})}" >
+		<form onsubmit="return checkValue();" 
+			  class="pure-form" method="post" 
+			  th:action="@{/student/{id}(id=${studentScore.id})}" >
+			  
 			<input type="hidden" id="_method1" name="_method" value="PUT">
 			<input type="hidden" id="id" name="id" th:value="${studentScore.id}">
+			
 			姓名: <input type="text" id="name" name="name" th:value="${studentScore.name}" required><p />
 			國文: <input type="number" id="chineseScore" name="chineseScore" th:value="${studentScore.chineseScore}" min="0" max="100" required><p />
 			英文: <input type="number" id="englishScore" name="englishScore" th:value="${studentScore.englishScore}" min="0" max="100" required><p />
 			數學: <input type="number" id="mathScore" name="mathScore" th:value="${studentScore.mathScore}" min="0" max="100" required><p />
+			
 			<button type="submit" class="pure-button pure-button-primary">修改</button>
 			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
 		<hr>
 		<h2>SpringForm 表單渲染</h2>
-		<form th:action="@{/student/{id}(id=${studentScore.id})}" 
-			  th:object="${studentScore}"
-			  method="post" class="pure-form">
+		<form onsubmit="return checkValue();"
+			  method="post" class="pure-form"
+			  th:action="@{/student/{id}(id=${studentScore.id})}" 
+			  th:object="${studentScore}">
+			  
 		    <input type="hidden" id="_method2" name="_method" value="PUT"/>
 		    <input type="hidden" th:field="*{id}" />
+		    
 		    姓名: <input type="text" th:field="*{name}" required /><p/>
 		    國文: <input type="number" th:field="*{chineseScore}" min="0" max="100" required /><p/>
 		    英文: <input type="number" th:field="*{englishScore}" min="0" max="100" required /><p/>
 		    數學: <input type="number" th:field="*{mathScore}" min="0" max="100" required /><p/>
+		    
 		    <button type="submit" class="pure-button pure-button-primary">修改</button>
 		    <button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
