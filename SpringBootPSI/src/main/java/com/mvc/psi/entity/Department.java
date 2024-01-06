@@ -5,6 +5,7 @@ import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +31,7 @@ public class Department {
 	// 若不加上 mappedBy = "department", 則會產生一個中間表格, 用來對應 Department 與 Employee 的關係
 	// 中間表格的欄位名稱為 department_id, employee_id
 	// 中間表格的欄位名稱可以透過 @JoinColumn(name = "department_id") 來指定
-	@OneToMany(mappedBy = "department")
+	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
 	@OrderBy("id ASC")
 	private Set<Employee> employees = new LinkedHashSet<>();
 }
