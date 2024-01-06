@@ -7,6 +7,7 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -77,6 +78,20 @@ public class StudentScoreController {
 			return "<a href='./' title='按我一下返回主畫面'>修改成功</a>";
 		}
 		return "<a href='./' title='按我一下返回主畫面'>修改失敗</a>";
+		
+	}
+	
+	// 刪除資料
+	@DeleteMapping("/{id}")
+	@ResponseBody
+	@Transactional
+	public String deleteStudentScore(@PathVariable("id") Integer id) {
+		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
+		if(studentScoreOpt.isPresent()) {
+			studentScoreRepository.delete(studentScoreOpt.get()); 
+			return "<a href='./' title='按我一下返回主畫面'>刪除成功</a>";
+		}
+		return "<a href='./' title='按我一下返回主畫面'>刪除失敗</a>";
 		
 	}
 	
