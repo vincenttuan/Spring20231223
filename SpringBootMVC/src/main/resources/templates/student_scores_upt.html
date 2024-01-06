@@ -29,5 +29,16 @@
 			<button type="submit" class="pure-button pure-button-primary">修改</button>
 			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
 		</form>
+		<hr>
+		<sp:form modelAttribute="student_score" class="pure-form" method="post" th:action="@{/student/{id}(id=${student_score.id})}">
+			<input type="hidden" id="_method" name="_method" value="PUT" />
+			<input type="hidden" id="id" name="id" />
+			姓名: <sp:input type="text" path="name" required /><p />
+			國文: <sp:input type="number" path="chineseScore" min="0" max="100" required /><p />
+			英文: <sp:input type="number" path="englishScore" min="0" max="100" required /><p />
+			數學: <sp:input type="number" path="mathScore" min="0" max="100" required><p />
+			<button type="submit" class="pure-button pure-button-primary">修改</button>
+			<button type="submit" onclick="uptMethodValue()" class="pure-button pure-button-primary">刪除</button>
+		</sp:form>
 	</body>
 </html>
