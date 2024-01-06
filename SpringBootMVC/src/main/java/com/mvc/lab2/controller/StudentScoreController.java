@@ -46,9 +46,12 @@ public class StudentScoreController {
 	}
 	
 	@GetMapping("/{id}")
-	@ResponseBody
-	public Optional<StudentScore> getStudentScoreById(@PathVariable("id") Integer id) {
-		return studentScoreRepository.findById(id);
+	public String getStudentScoreById(@PathVariable("id") Integer id, Model model) {
+		Optional<StudentScore> studentScoreOpt = studentScoreRepository.findById(id);
+		if(studentScoreOpt.isPresent()) {
+			model.addAttribute("student_score", studentScoreOpt.get());
+		}
+		return "student_scores_upt";
 	}
 	
 	@GetMapping("/")
