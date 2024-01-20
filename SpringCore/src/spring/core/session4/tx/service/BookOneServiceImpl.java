@@ -19,6 +19,8 @@ public class BookOneServiceImpl implements BookOneService {
 			propagation = Propagation.REQUIRED // 預設: 若當前有 tx, 則繼續使用, 若無則建立一個 tx
 	)
 	public void buyOne(String username, Integer bookId) { // 買一本書
+		// 紀錄 log
+		log();
 		// 1. 查詢書本價格
 		Integer bookPrice = bookDao.getBookPrice(bookId);
 		// 2. 減去庫存
@@ -36,5 +38,11 @@ public class BookOneServiceImpl implements BookOneService {
 		// 3. 修改餘額
 		bookDao.incrementWalletBalance(username, bookPrice);
 	}
-
+	
+	// log 紀錄
+	@Transactional(propagation = Propagation.REQUIRES_NEW)
+	public void log() {
+		// 資料庫存入一筆 log
+	}
+	
 }
