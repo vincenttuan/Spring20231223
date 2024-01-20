@@ -2,10 +2,11 @@ package spring.core.session4.tx.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
 import spring.core.session4.tx.dao.BookDao;
 
-@Repository
+@Service
 public class BookOneServiceImpl implements BookOneService {
 	final Integer ONE = 1;
 	@Autowired
