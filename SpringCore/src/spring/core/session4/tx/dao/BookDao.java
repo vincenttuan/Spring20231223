@@ -10,8 +10,8 @@ public interface BookDao {
 	Integer getWalletBalance(String username); // 取得客戶目前的餘額
 	
 	// 交易服務
-	Integer reduceBookStock(Integer bookId, Integer amountToReduce) throws InsufficientAmount, InsufficientStock; // 更新書本庫存(減量)
-	Integer reduceWalletBalance(String username, Integer amountToReduce) throws InsufficientAmount, InsufficientStock; // 更新錢包餘額(減量)
+	Integer reduceBookStock(Integer bookId, Integer amountToReduce) throws InsufficientStock; // 更新書本庫存(減量)
+	Integer reduceWalletBalance(String username, Integer amountToReduce) throws InsufficientAmount; // 更新錢包餘額(減量)
 	
 	Integer incrementBookStock(Integer bookId, Integer amountToIncrement);// 更新書本庫存(增量)
 	Integer incrementWalletBalance(String username, Integer amountToIncrement); // 更新錢包餘額(增量)
