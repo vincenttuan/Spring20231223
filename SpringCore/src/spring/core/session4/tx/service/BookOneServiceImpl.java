@@ -18,7 +18,9 @@ public class BookOneServiceImpl implements BookOneService {
 	@Override
 	// Spring 默認 Error, RuntimeException 也會進行回滾
 	@Transactional(
-			propagation = Propagation.REQUIRED // 預設: 若當前有 tx, 則繼續使用, 若無則建立一個 tx
+			propagation = Propagation.REQUIRED, // 預設: 若當前有 tx, 則繼續使用, 若無則建立一個 tx
+			rollbackFor = {InsufficientStock.class, InsufficientAmount.class} // 當庫存或餘額不足的時候才要回滾(rollback)
+			//noRollbackFor = {RuntimeException.class} // 任何的執行時期例外都不發生回滾(rollback)
 	)
 	public void buyOne(String username, Integer bookId) throws InsufficientStock, InsufficientAmount { // 買一本書
 		// 紀錄 log
