@@ -55,15 +55,17 @@ public class BookDaoImpl implements BookDao {
 	}
 
 	@Override
-	public Integer incrementBookStock(Integer bookId, Integer amountToIncrement) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer incrementBookStock(Integer bookId, Integer amountToIncrement) { // 更新書本庫存(增量)
+		// 更新庫存-增量(目前存量 + amountToIncrement)
+		String sql = "update stock set book_amount = book_amount + ? where book_id = ?";
+		return jdbcTemplate.update(sql, amountToIncrement, bookId);
 	}
 
 	@Override
-	public Integer incrementWalletBalance(String username, Integer amountToIncrement) {
-		// TODO Auto-generated method stub
-		return null;
+	public Integer incrementWalletBalance(String username, Integer amountToIncrement) { // 更新錢包餘額(增量)-加值
+		// 更新餘額-增量(目前餘額 - amountToIncrement)
+		String sql = "update wallet set balance = balance + ? where username = ?";
+		return jdbcTemplate.update(sql, amountToIncrement, username);
 	}
 
 }
