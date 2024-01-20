@@ -10,7 +10,7 @@ public class BookTest {
 		ApplicationContext ctx = new ClassPathXmlApplicationContext("jdbc-tx-config.xml");
 		
 		BookController bookController = ctx.getBean(BookController.class);
-		// John 買一本書
+		// John 買一本書 book_id = 1 的書
 		bookController.buyOneBook("John", 1);
 		
 		
