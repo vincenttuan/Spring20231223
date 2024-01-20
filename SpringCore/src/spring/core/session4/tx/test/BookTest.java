@@ -11,8 +11,9 @@ public class BookTest {
 		
 		BookController bookController = ctx.getBean(BookController.class);
 		// John 買一本書 book_id = 1 的書
-		bookController.buyOneBook("John", 1);
-		
+		//bookController.buyOneBook("John", 1);
+		// John 再買一本書 book_id = 2 的書
+		bookController.buyOneBook("John", 2);
 		
 	}
 }
