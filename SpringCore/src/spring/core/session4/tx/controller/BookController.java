@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import spring.core.session4.tx.exception.InsufficientAmount;
+import spring.core.session4.tx.exception.InsufficientStock;
 import spring.core.session4.tx.service.BookOneService;
 import spring.core.session4.tx.service.BookThreeService;
 
@@ -19,13 +21,24 @@ public class BookController {
 	
 	// 買單本書
 	public void buyOneBook(String username, Integer bookId) {
-		bookOneService.buyOne(username, bookId);
+		
+		try {
+			bookOneService.buyOne(username, bookId);
+		} catch (InsufficientStock | InsufficientAmount e) {
+			System.out.println("buyOneBook Error !");
+			return;
+		}
 		System.out.println("buyOneBook OK !");
 	}
 	
 	// 買3本書
 	public void buyThreeBooks(String username, Integer bookId) {
-		bookThreeService.buyThree(username, bookId);
+		try {
+			bookThreeService.buyThree(username, bookId);
+		} catch (InsufficientStock | InsufficientAmount e) {
+			System.out.println("buyThreeBooks Error !");
+			return;
+		}
 		System.out.println("buyThreeBooks OK !");
 	}
 	
