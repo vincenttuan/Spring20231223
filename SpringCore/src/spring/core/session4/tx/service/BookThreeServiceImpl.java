@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import spring.core.session4.tx.exception.InsufficientAmount;
+import spring.core.session4.tx.exception.InsufficientStock;
+
 @Service
 public class BookThreeServiceImpl implements BookThreeService {
 	
@@ -13,7 +16,7 @@ public class BookThreeServiceImpl implements BookThreeService {
 	
 	@Override
 	@Transactional(propagation = Propagation.REQUIRED)
-	public void buyThree(String username, Integer bookId) {
+	public void buyThree(String username, Integer bookId) throws InsufficientStock, InsufficientAmount {
 		bookOneService.buyOne(username, bookId);
 		bookOneService.buyOne(username, bookId);
 		bookOneService.buyOne(username, bookId);

@@ -6,6 +6,8 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import spring.core.session4.tx.dao.BookDao;
+import spring.core.session4.tx.exception.InsufficientAmount;
+import spring.core.session4.tx.exception.InsufficientStock;
 
 @Service
 public class BookOneServiceImpl implements BookOneService {
@@ -18,7 +20,7 @@ public class BookOneServiceImpl implements BookOneService {
 	@Transactional(
 			propagation = Propagation.REQUIRED // 預設: 若當前有 tx, 則繼續使用, 若無則建立一個 tx
 	)
-	public void buyOne(String username, Integer bookId) { // 買一本書
+	public void buyOne(String username, Integer bookId) throws InsufficientStock, InsufficientAmount { // 買一本書
 		// 紀錄 log
 		log();
 		// 1. 查詢書本價格
