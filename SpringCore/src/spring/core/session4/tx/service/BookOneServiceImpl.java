@@ -25,7 +25,7 @@ public class BookOneServiceImpl implements BookOneService {
 		bookDao.reduceBookStock(bookId, ONE);
 		// 3. 修改餘額
 		bookDao.reduceWalletBalance(username, bookPrice);
-	}
+	} // commit
 
 	@Override
 	public void refundOne(String username, Integer bookId) { // 退一本書
