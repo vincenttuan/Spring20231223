@@ -12,7 +12,7 @@ public class BookOneServiceImpl implements BookOneService {
 	private BookDao bookDao;
 	
 	@Override
-	public void buyOne(String username, Integer bookId) {
+	public void buyOne(String username, Integer bookId) { // 買一本書
 		// 1. 查詢書本價格
 		Integer bookPrice = bookDao.getBookPrice(bookId);
 		// 2. 減去庫存
@@ -22,9 +22,13 @@ public class BookOneServiceImpl implements BookOneService {
 	}
 
 	@Override
-	public void refundOne(String username, Integer bookId) {
-		// TODO Auto-generated method stub
-		
+	public void refundOne(String username, Integer bookId) { // 退一本書
+		// 1. 查詢書本價格
+		Integer bookPrice = bookDao.getBookPrice(bookId);
+		// 2. 回存庫存
+		bookDao.incrementBookStock(bookId, ONE);
+		// 3. 修改餘額
+		bookDao.incrementWalletBalance(username, bookPrice);
 	}
 
 }
