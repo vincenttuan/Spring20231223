@@ -2,6 +2,8 @@ package spring.core.session4.tx.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import spring.core.session4.tx.dao.BookDao;
 
@@ -12,6 +14,10 @@ public class BookOneServiceImpl implements BookOneService {
 	private BookDao bookDao;
 	
 	@Override
+	// Spring 默認 Error, RuntimeException 也會進行回滾
+	@Transactional(
+			propagation = Propagation.REQUIRED // 預設: 若當前有 tx, 則繼續使用, 若無則建立一個 tx
+	)
 	public void buyOne(String username, Integer bookId) { // 買一本書
 		// 1. 查詢書本價格
 		Integer bookPrice = bookDao.getBookPrice(bookId);

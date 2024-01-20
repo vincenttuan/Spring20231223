@@ -2,6 +2,7 @@ package spring.core.session4.tx.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 
 import spring.core.session4.tx.service.BookOneService;
 
