@@ -17,7 +17,7 @@ public class BookController {
 		System.out.println("buyOneBook OK !");
 	}
 	
-	// 買3本書(套書的概念)
+	// 買3本書
 	public void buyThreeBooks(String username, Integer bookId) {
 		bookOneService.buyOne(username, bookId);
 		bookOneService.buyOne(username, bookId);
