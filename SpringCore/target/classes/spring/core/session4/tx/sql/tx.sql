@@ -27,7 +27,7 @@ create table if not exists book(
 +---------+-------------+
 */
 create table if not exists stock(
-	book_id int, -- 書號
+	book_id int primary key, -- 書號
     book_amount int, -- 存量
     foreign key(book_id) references book(book_id)
 );
