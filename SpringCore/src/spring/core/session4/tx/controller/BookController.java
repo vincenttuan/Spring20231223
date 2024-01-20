@@ -21,7 +21,6 @@ public class BookController {
 	
 	// 買單本書
 	public void buyOneBook(String username, Integer bookId) {
-		
 		try {
 			bookOneService.buyOne(username, bookId);
 		} catch (InsufficientStock | InsufficientAmount e) {
