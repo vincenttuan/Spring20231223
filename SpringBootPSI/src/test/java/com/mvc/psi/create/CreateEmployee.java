@@ -4,49 +4,51 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.mvc.psi.model.dto.EmployeeDto;
 import com.mvc.psi.model.po.Department;
 import com.mvc.psi.model.po.Employee;
 import com.mvc.psi.repository.DepartmentRepository;
 import com.mvc.psi.repository.EmployeeRepository;
+import com.mvc.psi.service.EmployeeService;
 
 @SpringBootTest
 public class CreateEmployee {
 	
 	@Autowired
-	DepartmentRepository departmentRepository;
-	
-	@Autowired
-	EmployeeRepository employeeRepository;
+	private EmployeeService employeeService;
 	
 	@Test
 	public void test() {
-		Department sales    = departmentRepository.findById(1L).get();
-		Department it       = departmentRepository.findById(2L).get();
-		Department purchase = departmentRepository.findById(3L).get();
+		// DTO
+		EmployeeDto emp1 = new EmployeeDto();
+		emp1.setName("劉一");
+		EmployeeDto emp2 = new EmployeeDto();
+		emp2.setName("陳二");
+		EmployeeDto emp3 = new EmployeeDto();
+		emp3.setName("張三");
+		EmployeeDto emp4 = new EmployeeDto();
+		emp4.setName("李四");
+		EmployeeDto emp5 = new EmployeeDto();
+		emp5.setName("王五");
+		EmployeeDto emp6 = new EmployeeDto();
+		emp6.setName("趙六");
+		EmployeeDto emp7 = new EmployeeDto();
+		emp7.setName("孫七");
+		EmployeeDto emp8 = new EmployeeDto();
+		emp8.setName("王八"); // 周八
+		EmployeeDto emp9 = new EmployeeDto();
+		emp9.setName("吳九");
+		EmployeeDto emp10 = new EmployeeDto();
+		emp10.setName("鄭十");
 		
-		Employee emp1 = new Employee();
-		emp1.setName("John");
 		
-		Employee emp2 = new Employee();
-		emp2.setName("Mary");
 		
-		Employee emp3 = new Employee();
-		emp3.setName("Helen");
 		
-		Employee emp4 = new Employee();
-		emp4.setName("Bob");
 		
-		// 配置關聯
-		emp1.setDepartment(sales);
-		emp2.setDepartment(it);
-		emp3.setDepartment(it);
-		emp4.setDepartment(purchase);
 		
-		// 儲存
-		employeeRepository.save(emp1);
-		employeeRepository.save(emp2);
-		employeeRepository.save(emp3);
-		employeeRepository.save(emp4);
+		
+		
+		
 		
 		System.out.println("Save OK");
 	}
