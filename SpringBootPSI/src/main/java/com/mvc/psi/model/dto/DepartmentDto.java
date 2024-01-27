@@ -1,5 +1,8 @@
 package com.mvc.psi.model.dto;
 
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,7 +23,7 @@ public class DepartmentDto {
 	// 欄位資料 from po (供 controller 渲染)
 	private String name;
 	// 關聯資料 from po (供 controller 渲染)
-	 
+	private Set<?> employees = new LinkedHashSet<>(); 
 	// 其他業務資料可供 controller 渲染的欄位
 	
 	
