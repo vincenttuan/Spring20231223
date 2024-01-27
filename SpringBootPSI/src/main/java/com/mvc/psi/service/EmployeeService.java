@@ -84,4 +84,14 @@ public class EmployeeService {
 		throw new RuntimeException("刪除員工資料錯誤: 無此員工");
 	}
 	
+	// 單筆查詢
+	public EmployeeDto getEmployeeDtoById(Long id) {
+		Optional<Employee> employeeOpt = employeeRepository.findById(id);
+		return employeeRepository.findById(id).isPresent() ?
+			modelMapper.map(employeeOpt.get(), EmployeeDto.class) : null;
+	}
+	
+	// 全部查詢
+	
+	
 }
