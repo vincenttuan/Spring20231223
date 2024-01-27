@@ -1,4 +1,4 @@
-package com.mvc.psi.entity;
+package com.mvc.psi.model.po;
 
 import java.util.LinkedHashSet;
 import java.util.Set;

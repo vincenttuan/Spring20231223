@@ -7,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.mvc.psi.entity.Department;
-import com.mvc.psi.entity.Employee;
+import com.mvc.psi.model.po.Department;
+import com.mvc.psi.model.po.Employee;
 import com.mvc.psi.repository.DepartmentRepository;
 
 import jakarta.transaction.Transactional;
