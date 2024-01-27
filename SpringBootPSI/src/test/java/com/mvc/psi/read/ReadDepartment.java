@@ -7,9 +7,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.mvc.psi.model.dto.DepartmentDto;
 import com.mvc.psi.model.po.Department;
 import com.mvc.psi.model.po.Employee;
 import com.mvc.psi.repository.DepartmentRepository;
+import com.mvc.psi.service.DepartmentService;
 
 import jakarta.transaction.Transactional;
 
@@ -17,21 +19,15 @@ import jakarta.transaction.Transactional;
 public class ReadDepartment {
 	
 	@Autowired
-	DepartmentRepository departmentRepository;
+	private DepartmentService departmentService;
 	
 	@Test
-	public void read() {
-		List<Department> departments = departmentRepository.findAll();
-		//System.out.println(departments);
-		
-		for(Department dept : departments) {
-			System.out.print("部門名稱: " + dept.getName() + " 員工: ");
-			Set<Employee> employees = dept.getEmployees();
-			employees.forEach(emp -> System.out.print(emp.getName() + " "));
-			System.out.println();
-		}
-		
-		
+	public void readOne() {
+		System.out.println("readOne:");
+		DepartmentDto departmentDto = departmentService.getDepartmentDtoById(1L);
+		System.out.println("id: " + departmentDto.getId());
+		System.out.println("name: " + departmentDto.getName());
+		System.out.println("employees: " + departmentDto.getEmployees().size());
 	}
 	
 	
