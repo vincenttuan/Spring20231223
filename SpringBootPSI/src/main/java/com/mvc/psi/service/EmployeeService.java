@@ -72,4 +72,16 @@ public class EmployeeService {
 		throw new RuntimeException("修改員工資料錯誤: 無此員工");
 	}
 	
+	// 刪除
+	@Transactional
+	public void delete(Long id) {
+		Optional<Employee> employeeOpt = employeeRepository.findById(id);
+		if(employeeOpt.isPresent()) {
+			//employeeRepository.delete(employeeOpt.get());
+			employeeRepository.deleteById(id);
+			return;
+		}
+		throw new RuntimeException("刪除員工資料錯誤: 無此員工");
+	}
+	
 }
