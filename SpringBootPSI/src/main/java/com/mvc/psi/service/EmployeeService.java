@@ -88,7 +88,7 @@ public class EmployeeService {
 	// 單筆查詢
 	public EmployeeDto getEmployeeDtoById(Long id) {
 		Optional<Employee> employeeOpt = employeeRepository.findById(id);
-		return employeeRepository.findById(id).isPresent() ?
+		return employeeOpt.isPresent() ?
 			modelMapper.map(employeeOpt.get(), EmployeeDto.class) : null;
 	}
 	
