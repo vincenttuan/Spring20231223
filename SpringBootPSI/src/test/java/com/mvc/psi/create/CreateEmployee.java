@@ -35,20 +35,23 @@ public class CreateEmployee {
 		EmployeeDto emp7 = new EmployeeDto();
 		emp7.setName("孫七");
 		EmployeeDto emp8 = new EmployeeDto();
-		emp8.setName("王八"); // 周八
+		emp8.setName("周八"); 
 		EmployeeDto emp9 = new EmployeeDto();
 		emp9.setName("吳九");
 		EmployeeDto emp10 = new EmployeeDto();
 		emp10.setName("鄭十");
 		
-		
-		
-		
-		
-		
-		
-		
-		
+		// 儲存
+		employeeService.add(emp1, 1L);
+		employeeService.add(emp2, 2L);
+		employeeService.add(emp3, 2L);
+		employeeService.add(emp4, 3L);
+		employeeService.add(emp5, 3L);
+		employeeService.add(emp6, 3L);
+		employeeService.add(emp7, 1L);
+		employeeService.add(emp8, 2L);
+		employeeService.add(emp9, 3L);
+		employeeService.add(emp10, 3L);
 		
 		System.out.println("Save OK");
 	}
