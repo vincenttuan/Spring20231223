@@ -31,7 +31,7 @@ public class ReadDepartment {
 		//System.out.println("employees: " + departmentDto.getEmployees().size());
 	}
 	*/
-	
+	/*
 	@Transactional // 在測試的時候若 fetch = FetchType.LAZY, 要加上 @Transactional
 	@Test
 	public void readOne() {
@@ -41,5 +41,9 @@ public class ReadDepartment {
 		System.out.println("name: " + department.getName());
 		System.out.println("employees: " + department.getEmployees().size());
 	}
+	*/
+	
+	
+	
 	
 }

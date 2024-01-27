@@ -36,7 +36,7 @@ public class Department {
 	// 中間表格的欄位名稱可以透過 @JoinColumn(name = "department_id") 來指定
 	// fetch = FetchType.EAGER 表示在查詢部門時, 連同員工也要一併查詢
 	// @OneToMany 時預設是 fetch = FetchType.LAZY 
-	@OneToMany(mappedBy = "department", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "department", fetch = FetchType.EAGER)
 	@OrderBy("id ASC")
 	private Set<Employee> employees = new LinkedHashSet<>();
 }
