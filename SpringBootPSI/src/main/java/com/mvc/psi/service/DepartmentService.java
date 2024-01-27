@@ -50,12 +50,25 @@ public class DepartmentService {
 			department.setName(departmentDto.getName());
 			// 修改
 			departmentRepository.save(department);
+			return;
 		}
+		throw new RuntimeException("修改失敗: 無此資料");
 	}
 	
-	
 	// 刪除
+	@Transactional
+	public void delete(Long id) {
+		// 根據 id 找到可以刪除的紀錄
+		Optional<Department> departmentOpt = departmentRepository.findById(id);
+		if(departmentOpt.isPresent()) {
+			departmentRepository.deleteById(id);
+			return;
+		}
+		throw new RuntimeException("刪除失敗: 無此資料");
+	}
 	
-	// 查詢
+	// 查詢單筆
 	
+	
+	// 全部查詢
 }
