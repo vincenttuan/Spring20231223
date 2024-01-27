@@ -1,13 +1,17 @@
 package com.mvc.psi.read;
 
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mvc.psi.model.dto.DepartmentDto;
+import com.mvc.psi.model.dto.EmployeeDto;
 import com.mvc.psi.model.po.Department;
+import com.mvc.psi.model.po.Employee;
 import com.mvc.psi.repository.DepartmentRepository;
 import com.mvc.psi.service.DepartmentService;
 
@@ -43,7 +47,21 @@ public class ReadDepartment {
 	}
 	*/
 	
-	
+	@Transactional
+	@Test
+	public void readAll() {
+		System.out.println("readAll:");
+		List<DepartmentDto> departmentDtos = departmentService.findAll();
+		for(DepartmentDto departmentDto : departmentDtos) {
+			System.out.println("id: " + departmentDto.getId());
+			System.out.println("name: " + departmentDto.getName());
+			System.out.println("employees: " + departmentDto.getEmployees().size());
+			for(EmployeeDto employeeDto : departmentDto.getEmployees()) {
+				System.out.println("\t姓名: " + employeeDto.getName());
+			}
+		}
+		
+	} 
 	
 	
 }
