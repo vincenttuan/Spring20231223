@@ -1,5 +1,6 @@
 package com.mvc.psi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -81,6 +82,12 @@ public class DepartmentService {
 	}
 	
 	// 全部查詢
-	
+	public List<DepartmentDto> findAll() {
+		List<Department> departments = departmentRepository.findAll();
+		return departments.stream()
+				.map(department -> modelMapper.map(department, DepartmentDto.class))
+				.toList();
+		
+	}
 	
 }
