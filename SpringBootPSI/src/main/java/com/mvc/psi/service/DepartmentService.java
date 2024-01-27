@@ -68,7 +68,19 @@ public class DepartmentService {
 	}
 	
 	// 查詢單筆
-	
+	public DepartmentDto getDepartmentDtoById(Long id) {
+		// 根據 id 可以找到該筆紀錄
+		Optional<Department> departmentOpt = departmentRepository.findById(id);
+		if(departmentOpt.isPresent()) {
+			Department department = departmentOpt.get();
+			// PO 轉 DTO
+			DepartmentDto departmentDto = modelMapper.map(department, DepartmentDto.class);
+			return departmentDto;
+		}
+		return null;
+	}
 	
 	// 全部查詢
+	
+	
 }
