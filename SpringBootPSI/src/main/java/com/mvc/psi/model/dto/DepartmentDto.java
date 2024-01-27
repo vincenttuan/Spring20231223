@@ -1,5 +1,8 @@
 package com.mvc.psi.model.dto;
 
+import lombok.Getter;
+import lombok.Setter;
+
 /**
  * DepartmentDTO（Data Transfer Object，數據傳輸對象）是一個用於封裝數據並在應用程序的不同層之間傳輸數據的模式。
  * 這個類別的用途主要包括：
@@ -9,6 +12,16 @@ package com.mvc.psi.model.dto;
  * 安全性：它可以避免直接將實體對象暴露給客戶端，從而保護了數據模型的完整性。這也有助於防止意外暴露敏感信息。
  * 靈活性：DTO 允許您根據前端的需要定制所需的數據結構，這比直接使用數據實體（Entity）更為靈活。
 */
+@Getter
+@Setter
 public class DepartmentDto {
+	// 欄位資料 from po (供 controller 渲染)
+	private Long id;
+	// 欄位資料 from po (供 controller 渲染)
+	private String name;
+	// 關聯資料 from po (供 controller 渲染)
+	 
+	// 其他業務資料可供 controller 渲染的欄位
+	
 	
 }
