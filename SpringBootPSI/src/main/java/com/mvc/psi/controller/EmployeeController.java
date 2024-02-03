@@ -69,7 +69,7 @@ public class EmployeeController {
 	@GetMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id) {
 		employeeService.delete(id);
-		return "redirect:/employee/";
+		return "redirect:/employee/"; // 重導到 http://localhost:8080/psi/employee/
 	}
 	
 }
