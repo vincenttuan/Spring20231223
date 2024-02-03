@@ -17,7 +17,7 @@ public class ReadEmployee {
 	@Test
 	public void readOne() {
 		// 請協助找出 "張三" 所屬的部門總共有哪些幾位員工 ?
-		employeeService.finaAll().stream()
+		employeeService.findAll().stream()
 			.filter(employeeDto -> employeeDto.getName().equals("張三"))
 			.findAny()
 			.get()

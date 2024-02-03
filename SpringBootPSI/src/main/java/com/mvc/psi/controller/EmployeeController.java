@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mvc.psi.model.dto.DepartmentDto;
 import com.mvc.psi.model.dto.EmployeeDto;
@@ -39,7 +40,7 @@ public class EmployeeController {
 	public String index(@ModelAttribute EmployeeDto employeeDto, Model model) {
 		
 		List<DepartmentDto> departmentDtos = departmentService.findAll();
-		List<EmployeeDto> employeeDtos = employeeService.finaAll();
+		List<EmployeeDto> employeeDtos = employeeService.findAll();
 		model.addAttribute("departmentDtos", departmentDtos);
 		model.addAttribute("employeeDtos", employeeDtos);
 		//model.addAttribute("employeeDto", employeeDto);
@@ -55,13 +56,21 @@ public class EmployeeController {
 	}
 	
 	@PostMapping("/")
-	public String create(EmployeeDto employeeDto) {
+	//@ResponseBody
+	public String create(EmployeeDto employeeDto, Model model) {
 		employeeService.add(employeeDto);
+		
+		// 重導到指定網頁 (http://localhost:8080/psi/employee/)
+		// 1.發出一個重導命令給瀏覽器
+		// 2.瀏覽器接到重導命令後會自動執行重導動作
+		// 3.重導動作就是自動重連 http://localhost:8080/psi/employee/ 位置
 		return "redirect:/employee/";
+		//return "redirect:https://tw.yahoo.com";
+		//return "Save OK!";
 	}
 	
 	@PutMapping("/{id}")
-	public String update(EmployeeDto employeeDto, @PathVariable("id") Long id) {
+	public String update(EmployeeDto employeeDto, @PathVariable("id") Long id, Model model) {
 		employeeService.update(employeeDto, id);
 		return "redirect:/employee/";
 	}

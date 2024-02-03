@@ -93,7 +93,7 @@ public class EmployeeService {
 	}
 	
 	// 全部查詢
-	public List<EmployeeDto> finaAll() {
+	public List<EmployeeDto> findAll() {
 		return employeeRepository.findAll()
 				.stream()
 				.map(employee -> modelMapper.map(employee, EmployeeDto.class))
