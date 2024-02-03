@@ -49,6 +49,18 @@ public class CustomerService {
 	}
 	
 	// 查詢單筆
+	public CustomerDto getCustomerDtoById(Long id) {
+		Optional<Customer> customerOpt = customerRepository.findById(id);
+		if(customerOpt.isPresent()) {
+			Customer customer = customerOpt.get();
+			// Po 轉 Dto
+			CustomerDto customerDto = modelMapper.map(customer, CustomerDto.class);
+			return customerDto;
+		}
+		return null;
+	}
 	
 	// 查詢全部
+	
+	
 }
