@@ -34,10 +34,12 @@ public class CustomerService {
 	public void update(CustomerDto customerDto, Long id) {
 		Optional<Customer> customerOpt = customerRepository.findById(id);
 		
-		customerOpt.ifPresentOrElse(customer -> {
-			customer.setName(customerDto.getName());
-			customerRepository.save(customer);
-		}, () -> {throw new RuntimeException("修改失敗: 無此資料");});
+		customerOpt.ifPresentOrElse(
+				customer -> {
+								customer.setName(customerDto.getName());
+								customerRepository.save(customer);
+							}, 
+				() -> {throw new RuntimeException("修改失敗: 無此資料");});
 		
 		/*
 		if(customerOpt.isPresent()) {
