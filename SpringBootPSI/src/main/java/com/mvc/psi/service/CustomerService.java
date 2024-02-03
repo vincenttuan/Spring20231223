@@ -1,5 +1,6 @@
 package com.mvc.psi.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
@@ -61,6 +62,12 @@ public class CustomerService {
 	}
 	
 	// 查詢全部
-	
+	public List<CustomerDto> findAll() {
+		List<Customer> customers = customerRepository.findAll();  // Customer(Po) 的 list
+		List<CustomerDto> customerDtos = customers.stream()
+				.map(customer -> modelMapper.map(customer, CustomerDto.class)) // 逐筆轉 Dto
+				.toList();
+		return customerDtos;
+	}
 	
 }
