@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.psi.model.dto.DepartmentDto;
@@ -50,6 +52,24 @@ public class EmployeeController {
 		model.addAttribute("employeeDto", employeeDto);
 		model.addAttribute("departmentDtos", departmentService.findAll());
 		return "employee-edit";
+	}
+	
+	@PostMapping("/")
+	public String create(EmployeeDto employeeDto) {
+		employeeService.add(employeeDto);
+		return "redirect:/employee/";
+	}
+	
+	@PutMapping("/{id}")
+	public String update(EmployeeDto employeeDto, @PathVariable("id") Long id) {
+		employeeService.update(employeeDto, id);
+		return "redirect:/employee/";
+	}
+	
+	@GetMapping("/delete/{id}")
+	public String delete(@PathVariable("id") Long id) {
+		employeeService.delete(id);
+		return "redirect:/employee/";
 	}
 	
 }
