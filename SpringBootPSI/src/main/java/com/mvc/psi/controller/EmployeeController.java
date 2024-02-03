@@ -1,7 +1,18 @@
 package com.mvc.psi.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.mvc.psi.model.dto.DepartmentDto;
+import com.mvc.psi.model.dto.EmployeeDto;
+import com.mvc.psi.service.DepartmentService;
+import com.mvc.psi.service.EmployeeService;
 
 /*
  * URL 路徑設計
@@ -13,5 +24,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/employee")
 public class EmployeeController {
-
+	
+	@Autowired
+	private DepartmentService departmentService;
+	
+	@Autowired
+	private EmployeeService employeeService;
+	
+	@GetMapping("/")
+	public String index(@ModelAttribute EmployeeDto employeeDto, Model model) {
+		
+		List<DepartmentDto> departmentDtos = departmentService.findAll();
+		model.addAttribute("departmentDtos", departmentDtos);
+		model.addAttribute("employeeDto", employeeDto);
+		return "employee";
+	}
+	
 }
