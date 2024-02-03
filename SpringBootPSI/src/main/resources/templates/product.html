@@ -48,11 +48,7 @@
 					<td th:text="${product.cost}"></td>
 					<td th:text="${product.price}"></td>
 					<td>
-						<span th:if="${product?.purchaseItems != null}">
-				            <span th:each="item : ${product.purchaseItems}">
-				                <span th:text="${item.purchase.supplier.name}"></span>
-				            </span>
-				        </span>
+						...
 					</td>
 					<td><a th:href="@{/product/edit/{id}(id=${product.id})}" class="btn btn-primary">編輯</a></td>
 					<td><a th:href="@{/product/delete/{id}(id=${product.id})}" class="btn btn-danger">刪除</a></td>
