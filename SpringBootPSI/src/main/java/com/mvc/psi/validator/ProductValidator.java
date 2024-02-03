@@ -26,6 +26,13 @@ public class ProductValidator implements Validator {
 			errors.reject("price", String.format("商品售價($%d)不可以小於商品成本($%d)", productDto.getPrice(), productDto.getCost()));
 		}
 		
+		if(productDto.getPrice() < 0) {
+			errors.reject("price", String.format("商品售價($%d)不可以小於0", productDto.getPrice()));
+		}
+		
+		if(productDto.getCost() < 0) {
+			errors.reject("cost", String.format("商品成本($%d)不可以小於0", productDto.getCost()));
+		}
 		
 	}
 	
