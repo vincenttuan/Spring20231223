@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.psi.model.dto.ProductDto;
 import com.mvc.psi.model.po.Product;
-import com.mvc.psi.repository.ProductReposiroty;
+import com.mvc.psi.repository.ProductRepository;
 
 @Service
 public class ProductService {
 	
 	@Autowired
-	private ProductReposiroty productReposiroty;
+	private ProductRepository productRepository;
 	
 	@Autowired
 	private ModelMapper modelMapper;
@@ -24,18 +24,18 @@ public class ProductService {
 	public void add(ProductDto productDto) {
 		// Dto 轉 Po
 		Product product = modelMapper.map(productDto, Product.class);
-		productReposiroty.save(product);
+		productRepository.save(product);
 	}
 	
 	// 修改
 	public void update(ProductDto productDto, Long id) {
-		Optional<Product> productOpt = productReposiroty.findById(id);
+		Optional<Product> productOpt = productRepository.findById(id);
 		if(productOpt.isPresent()) {
 			Product product = productOpt.get();
 			product.setName(productDto.getName());
 			product.setCost(productDto.getCost());
 			product.setPrice(productDto.getPrice());
-			productReposiroty.save(product);
+			productRepository.save(product);
 			return;
 		}
 		throw new RuntimeException("修改失敗: 無此資料");
@@ -43,9 +43,9 @@ public class ProductService {
 	
 	// 刪除
 	public void delete(Long id) {
-		Optional<Product> productOpt = productReposiroty.findById(id);
+		Optional<Product> productOpt = productRepository.findById(id);
 		if(productOpt.isPresent()) {
-			productReposiroty.deleteById(id);
+			productRepository.deleteById(id);
 			return;
 		}
 		throw new RuntimeException("刪除失敗: 無此資料");
@@ -53,7 +53,7 @@ public class ProductService {
 	
 	// 查詢單筆
 	public ProductDto getProductDtoById(Long id) {
-		Optional<Product> productOpt = productReposiroty.findById(id);
+		Optional<Product> productOpt = productRepository.findById(id);
 		if(productOpt.isPresent()) {
 			ProductDto productDto = modelMapper.map(productOpt.get(), ProductDto.class);
 			return productDto;
@@ -63,7 +63,7 @@ public class ProductService {
 	
 	// 查詢多筆
 	public List<ProductDto> findAll() {
-		return productReposiroty.findAll().stream()
+		return productRepository.findAll().stream()
 				.map(product -> modelMapper.map(product, ProductDto.class))
 				.toList();
 	}
