@@ -38,7 +38,7 @@ public class EmployeeController {
 		List<EmployeeDto> employeeDtos = employeeService.finaAll();
 		model.addAttribute("departmentDtos", departmentDtos);
 		model.addAttribute("employeeDtos", employeeDtos);
-		model.addAttribute("employeeDto", employeeDto);
+		//model.addAttribute("employeeDto", employeeDto);
 		return "employee";
 	}
 	
