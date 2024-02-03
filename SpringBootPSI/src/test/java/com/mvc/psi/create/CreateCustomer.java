@@ -31,9 +31,6 @@ public class CreateCustomer {
 		
 		System.out.println("Save OK !");
 		
-		
-		
-		
 	}
 	
 	
