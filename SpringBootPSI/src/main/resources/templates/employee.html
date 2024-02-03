@@ -50,7 +50,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr th:each="emp : ${employeeDto.getEmployees()}">
+				<tr th:each="emp : ${employeeDtos}">
 					<td th:text="${emp.id}"></td>
 					<td th:text="${emp.name}"></td>
 					<td>

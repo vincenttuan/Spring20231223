@@ -35,7 +35,9 @@ public class EmployeeController {
 	public String index(@ModelAttribute EmployeeDto employeeDto, Model model) {
 		
 		List<DepartmentDto> departmentDtos = departmentService.findAll();
+		List<EmployeeDto> employeeDtos = employeeService.finaAll();
 		model.addAttribute("departmentDtos", departmentDtos);
+		model.addAttribute("employeeDtos", employeeDtos);
 		model.addAttribute("employeeDto", employeeDto);
 		return "employee";
 	}
