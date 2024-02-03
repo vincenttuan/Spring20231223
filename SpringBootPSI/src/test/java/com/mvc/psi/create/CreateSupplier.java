@@ -16,13 +16,13 @@ public class CreateSupplier {
 	@Test
 	public void test() {
 		SupplierDto supplierDto1 = new SupplierDto();
-		supplierDto1.setName("John");
+		supplierDto1.setName("供應商一");
 		
 		SupplierDto supplierDto2 = new SupplierDto();
-		supplierDto2.setName("Mary");
+		supplierDto2.setName("供應商二");
 		
 		SupplierDto supplierDto3 = new SupplierDto();
-		supplierDto3.setName("Helen");
+		supplierDto3.setName("供應商三");
 		
 		// 儲存
 		supplierService.add(supplierDto1);
