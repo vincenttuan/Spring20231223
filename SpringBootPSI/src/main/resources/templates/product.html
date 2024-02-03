@@ -25,6 +25,7 @@
 				<label>商品售價:</label>
 				<input type="number" th:field="*{price}" id="price" class="form-control" placeholder="0" required>
 			</div>
+			<div th:text="${errors}"></div>
 			<input type="submit" value="新增商品" class="btn btn-primary" />
 		</form>
 		<p />
