@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mvc.psi.model.dto.DepartmentDto;
@@ -41,6 +42,14 @@ public class EmployeeController {
 		model.addAttribute("employeeDtos", employeeDtos);
 		//model.addAttribute("employeeDto", employeeDto);
 		return "employee";
+	}
+	
+	@GetMapping("/edit/{id}")
+	public String edit(@PathVariable("id") Long id, Model model) {
+		EmployeeDto employeeDto = employeeService.getEmployeeDtoById(id);
+		model.addAttribute("employeeDto", employeeDto);
+		model.addAttribute("departmentDtos", departmentService.findAll());
+		return "employee-edit";
 	}
 	
 }
