@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.mvc.psi.model.dto.CustomerDto;
 import com.mvc.psi.model.dto.SupplierDto;
-import com.mvc.psi.service.CustomerService;
 import com.mvc.psi.service.SupplierService;
 
 /*
@@ -32,8 +30,8 @@ public class SupplierController {
 	@GetMapping("/")
 	public String index(@ModelAttribute SupplierDto supplierDto, Model model) {
 		List<SupplierDto> supplierDtos = supplierService.findAll();
-		model.addAttribute("customerDtos", supplierDtos);
-		return "customer";
+		model.addAttribute("supplierDtos", supplierDtos);
+		return "supplier";
 	}
 	
 	
