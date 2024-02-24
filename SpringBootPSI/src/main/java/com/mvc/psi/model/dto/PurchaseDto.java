@@ -30,12 +30,7 @@ public class PurchaseDto {
 	
 	// 計算採購單總價
 	public Integer getTotal() {
-		if(purchaseItems.size() == 0) {
-			return 0;
-		}
-		return purchaseItems.stream()
-				.mapToInt(item -> item.getAmount() * item.getProduct().getCost())
-				.sum();
+		
 	}
 }
 
