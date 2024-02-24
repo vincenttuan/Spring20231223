@@ -12,6 +12,9 @@ public class PurchaseItemDto {
 	private PurchaseDto purchase;
 	private ProductDto product;
 	
+	public Integer getTotalCost() {
+		return amount * product.getCost();
+	}
 }
 
 
