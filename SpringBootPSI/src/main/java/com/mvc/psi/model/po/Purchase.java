@@ -17,6 +17,7 @@ import jakarta.persistence.TemporalType;
 import lombok.Getter;
 import lombok.Setter;
 
+// 採購單
 @Entity
 @Table(name = "purchase")
 @Getter
