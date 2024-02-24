@@ -72,6 +72,7 @@ public class PurchaseService {
 	}
 	
 	// 刪除
+	@Transactional
 	public void delete(Long id) {
 		Optional<Purchase> purchaseOpt = purchaseRepository.findById(id);
 		if(purchaseOpt.isPresent()) {
@@ -119,5 +120,58 @@ public class PurchaseService {
 	// -----------------------------------------------------------------------------------
 	// PurchaseItem-CRUD
 	
+	// 新增採購單項目
+	// pid 指的是採購單主檔 id
+	@Transactional
+	public void addItem(PurchaseItemDto purchaseItemDto, Long pid) {
+		// DTO -> PO
+		// 採購單明細
+		PurchaseItem purchaseItem = modelMapper.map(purchaseItemDto,  PurchaseItem.class);
+		// 採購單主檔
+		Optional<Purchase> purchaseOpt = purchaseRepository.findById(pid);
+		if(purchaseOpt.isPresent()) {
+			// 採購單明細注入採購單主檔, 建立關聯
+			purchaseItem.setPurchase(purchaseOpt.get());
+			purchaseItemRepository.save(purchaseItem);
+		}
+	}
+	
+	// 查詢單筆採購單項目
+	public PurchaseItemDto getPurchaseItemDtoById(Long iid) {
+		Optional<PurchaseItem> purchaseItemOpt = purchaseItemRepository.findById(iid);
+		if(purchaseItemOpt.isPresent()) {
+			PurchaseItem purchaseItem = purchaseItemOpt.get();
+			// 直接轉
+			//PurchaseItemDto purchaseItemDto = modelMapper.map(purchaseItem, PurchaseItemDto.class);
+			// 手動轉(逐一配置)
+			PurchaseItemDto purchaseItemDto = new PurchaseItemDto();
+			purchaseItemDto.setId(purchaseItem.getId());
+			purchaseItemDto.setAmount(purchaseItem.getAmount());
+			purchaseItemDto.setProduct(modelMapper.map(purchaseItem.getProduct(), ProductDto.class));
+			purchaseItemDto.setPurchase(modelMapper.map(purchaseItem.getPurchase(), PurchaseDto.class));
+			return purchaseItemDto;
+		}
+		return null;
+	}
+	
+	// 修改採購單項目
+	@Transactional
+	public void updatePurchaseItem(PurchaseItemDto purchaseItemDto, Long pid) {
+		// DTO -> PO
+		// 採購單明細
+		PurchaseItem purchaseItem = modelMapper.map(purchaseItemDto,  PurchaseItem.class);
+		// 採購單主檔
+		Optional<Purchase> purchaseOpt = purchaseRepository.findById(pid);
+		if(purchaseOpt.isPresent()) {
+			purchaseItem.setPurchase(purchaseOpt.get());
+			purchaseItemRepository.save(purchaseItem);
+		}
+	}
+	
+	// 刪除採購單項目
+	@Transactional
+	public void deletePurchaseItem(Long iid) {
+		purchaseItemRepository.deleteById(iid);
+	}
 	
 }
