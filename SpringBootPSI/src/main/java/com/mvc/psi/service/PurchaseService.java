@@ -147,14 +147,16 @@ public class PurchaseService {
 		if(purchaseItemOpt.isPresent()) {
 			PurchaseItem purchaseItem = purchaseItemOpt.get();
 			// 直接轉
-			//PurchaseItemDto purchaseItemDto = modelMapper.map(purchaseItem, PurchaseItemDto.class);
+			return modelMapper.map(purchaseItem, PurchaseItemDto.class);
 			// 手動轉(逐一配置)
+			/*
 			PurchaseItemDto purchaseItemDto = new PurchaseItemDto();
 			purchaseItemDto.setId(purchaseItem.getId());
 			purchaseItemDto.setAmount(purchaseItem.getAmount());
 			purchaseItemDto.setProduct(modelMapper.map(purchaseItem.getProduct(), ProductDto.class));
 			purchaseItemDto.setPurchase(modelMapper.map(purchaseItem.getPurchase(), PurchaseDto.class));
 			return purchaseItemDto;
+			*/
 		}
 		return null;
 	}
