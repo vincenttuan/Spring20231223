@@ -85,6 +85,10 @@ public class PurchaseService {
 	public PurchaseDto getPurchaseDtoById(Long id) {
 		Optional<Purchase> purchaseOpt = purchaseRepository.findById(id);
 		if(purchaseOpt.isPresent()) {
+			// 自動轉
+			return modelMapper.map(purchaseOpt.get(), PurchaseDto.class);
+			/*
+			// 手動轉
 			Purchase purchase = purchaseOpt.get();
 			// 將欄位資料逐一轉 Dto
 			PurchaseDto purchaseDto = new PurchaseDto();
@@ -104,6 +108,7 @@ public class PurchaseService {
 			}
 			purchaseDto.setPurchaseItems(purchaseItemDtos);
 			return purchaseDto;
+			*/
 		}
 		return null;
 	}
