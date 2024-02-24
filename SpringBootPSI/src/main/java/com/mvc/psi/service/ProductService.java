@@ -69,11 +69,12 @@ public class ProductService {
 				.toList();
 	}
 	
-	// 庫存查詢
+	// 庫存查詢-單筆
 	public Inventory findInventoryById(Long id) {
 		return productRepository.findInventoryById(id);
 	}
 	
+	// 庫存查詢-全部
 	public List<Inventory> queryInventory() {
 		return productRepository.queryInventory();
 	}
