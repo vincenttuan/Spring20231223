@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.mvc.psi.model.dto.ProductDto;
 import com.mvc.psi.model.po.Product;
+import com.mvc.psi.model.vo.Inventory;
 import com.mvc.psi.repository.ProductRepository;
 
 @Service
@@ -66,6 +67,15 @@ public class ProductService {
 		return productRepository.findAll().stream()
 				.map(product -> modelMapper.map(product, ProductDto.class))
 				.toList();
+	}
+	
+	// 庫存查詢
+	public Inventory findInventoryById(Long id) {
+		return productRepository.findInventoryById(id);
+	}
+	
+	public List<Inventory> queryInventory() {
+		return productRepository.queryInventory();
 	}
 	
 }
