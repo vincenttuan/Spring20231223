@@ -3,6 +3,9 @@ package com.mvc.psi.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentLinkedDeque;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -105,8 +108,12 @@ public class PurchaseService {
 	}
 	
 	// 全部查詢
-	public List<ProductDto> findAll() {
-		
+	public List<PurchaseDto> findAll() {
+		List<Purchase> purchases = purchaseRepository.findAll();
+		List<PurchaseDto> purchaseDtos = purchases.stream()
+				.map(purchase -> getPurchaseDtoById(purchase.getId()))
+				.toList();
+		return purchaseDtos;
 	}
 	
 	// -----------------------------------------------------------------------------------
