@@ -104,6 +104,10 @@ public class PurchaseService {
 		return null;
 	}
 	
+	// 全部查詢
+	public List<ProductDto> findAll() {
+		
+	}
 	
 	// -----------------------------------------------------------------------------------
 	// PurchaseItem-CRUD
