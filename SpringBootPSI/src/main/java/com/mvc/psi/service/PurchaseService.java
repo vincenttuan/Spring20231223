@@ -1,14 +1,21 @@
 package com.mvc.psi.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.mvc.psi.model.dto.EmployeeDto;
+import com.mvc.psi.model.dto.ProductDto;
 import com.mvc.psi.model.dto.PurchaseDto;
+import com.mvc.psi.model.dto.PurchaseItemDto;
+import com.mvc.psi.model.dto.SupplierDto;
 import com.mvc.psi.model.po.Employee;
 import com.mvc.psi.model.po.Purchase;
+import com.mvc.psi.model.po.PurchaseItem;
 import com.mvc.psi.model.po.Supplier;
 import com.mvc.psi.repository.PurchaseItemRepository;
 import com.mvc.psi.repository.PurchaseRepository;
@@ -60,6 +67,43 @@ public class PurchaseService {
 		}
 		
 	}
+	
+	// 刪除
+	public void delete(Long id) {
+		Optional<Purchase> purchaseOpt = purchaseRepository.findById(id);
+		if(purchaseOpt.isPresent()) {
+			Purchase purchase = purchaseOpt.get();
+			purchaseRepository.delete(purchase);
+		}
+	}
+	
+	// 單筆查詢
+	public PurchaseDto getPurchaseDtoById(Long id) {
+		Optional<Purchase> purchaseOpt = purchaseRepository.findById(id);
+		if(purchaseOpt.isPresent()) {
+			Purchase purchase = purchaseOpt.get();
+			// 將欄位資料逐一轉 Dto
+			PurchaseDto purchaseDto = new PurchaseDto();
+			purchaseDto.setId(purchase.getId());
+			purchaseDto.setDate(purchase.getDate());
+			purchaseDto.setEmployee(modelMapper.map(purchase.getEmployee(), EmployeeDto.class));
+			purchaseDto.setSupplier(modelMapper.map(purchase.getSupplier(), SupplierDto.class));
+			// 明細
+			List<PurchaseItemDto> purchaseItemDtos = new ArrayList<>();
+			// 逐一將 PO 轉 DTO
+			for(PurchaseItem item : purchase.getPurchaseItems()) {
+				PurchaseItemDto purchaseItemDto = new PurchaseItemDto();
+				purchaseItemDto.setId(item.getId());
+				purchaseItemDto.setAmount(item.getAmount());
+				purchaseItemDto.setProduct(modelMapper.map(item.getProduct(), ProductDto.class));
+				purchaseItemDtos.add(purchaseItemDto);
+			}
+			purchaseDto.setPurchaseItems(purchaseItemDtos);
+			return purchaseDto;
+		}
+		return null;
+	}
+	
 	
 	// -----------------------------------------------------------------------------------
 	// PurchaseItem-CRUD
