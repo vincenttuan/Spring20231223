@@ -24,6 +24,7 @@
 			<div class="form-group">
 				<label>商品售價:</label>
 				<input type="number" th:field="*{price}" id="price" class="form-control" placeholder="0" required>
+				<div th:if="${#fields.hasErrors('price')}" th:errorclass="error" th:errors="*{price}"></div>
 			</div>
 			
 			<div class="alert alert-danger" th:if="${#fields.hasErrors('*')}">
