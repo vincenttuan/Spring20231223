@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
 public class MyLoggerAspect {
 	private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	
-	@Before(value = "execution(public Integer spring.core.session6.dyn.CalcImpl.add(Integer, Integer))")
+	@Before(value = "execution(public Integer spring.core.session6.aop.CalcImpl.add(Integer, Integer))")
 	public void beforeAdvice(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName(); // 方法名稱
 		Object[] args = joinPoint.getArgs(); // 方法參數
