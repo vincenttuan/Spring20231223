@@ -28,6 +28,7 @@ public class DynProxy {
 			System.out.println("進行前置通知程序...");
 			// 執行業務方法
 			Object result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
+			//System.out.println(result);
 			// 公用方法: 後置通知
 			System.out.println("進行後置通知程序...");
 			return result;
