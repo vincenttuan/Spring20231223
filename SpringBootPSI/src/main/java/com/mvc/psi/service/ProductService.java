@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.mvc.psi.model.dto.ProductDto;
 import com.mvc.psi.model.po.Product;
 import com.mvc.psi.model.vo.Inventory;
+import com.mvc.psi.model.vo.ProductSales;
 import com.mvc.psi.repository.ProductRepository;
 
 @Service
@@ -77,6 +78,11 @@ public class ProductService {
 	// 庫存查詢-全部
 	public List<Inventory> queryInventory() {
 		return productRepository.queryInventory();
+	}
+	
+	// 統計圖表查詢
+	public List<ProductSales> queryProductSales() {
+		return productRepository.queryProductSales();
 	}
 	
 }
