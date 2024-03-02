@@ -1,5 +1,5 @@
 package spring.core.session5.sta;
 
 public interface Calc {
-	int calculate(int x, int y);
+	Integer calculate(Integer x, Integer y);
 }
