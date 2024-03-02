@@ -24,8 +24,8 @@ public class DynProxy {
 		Class<?>[] interfaces = object.getClass().getInterfaces(); 
 		// 3. 處理代理的實現
 		InvocationHandler handler = (Object proxy, Method method, Object[] args) -> {
-			
-			return null;
+			Object result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
+			return result;
 		};
 		//newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler handler) 
 		proxyObj = Proxy.newProxyInstance(loader, interfaces, handler);
