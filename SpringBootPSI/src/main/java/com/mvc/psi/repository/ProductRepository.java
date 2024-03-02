@@ -24,6 +24,8 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "from product p where p.id=:id ")
 	Inventory findInventoryById(Long id);
 	
+	// coalesce 合併
+	// coalesce(sum(o.amount), 0) 若 sum(o.amount) 是 null 就以 0 來呈現
 	@Query(nativeQuery = true, value="SELECT p.id, p.name, coalesce(sum(o.amount), 0) AS total "
 			+ "FROM product p "
 			+ "LEFT JOIN order_item o ON p.id = o.product_id "
