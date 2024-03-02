@@ -21,12 +21,16 @@ public class CalcProxy implements Calc {
 				errorMessage += errorMessage.isEmpty() ? "" : ", ";
 				errorMessage += "例外通知: y 不可是 null";
 			}
-			throw new IllegalArgumentException(errorMessage); // 拋出一個參數錯誤例外
+			//throw new IllegalArgumentException(errorMessage); // 拋出一個參數錯誤例外
+			System.out.println(errorMessage);
+			return null;
 		}
 		
 		// 檢查若 calc 是 Div 時分母不可 = 0
 		if(calc instanceof Div && y == 0) {
-			throw new ArithmeticException("例外通知: 分母不可 = 0");
+			//throw new ArithmeticException("例外通知: 分母不可 = 0");
+			System.out.println("例外通知: 分母不可 = 0");
+			return null;
 		}
 		
 		return calc.calculate(x, y);
