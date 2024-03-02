@@ -6,16 +6,18 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
+import java.util.Date;
 
 // 紀錄所有使用者下達參數的切面程式
 public class MyLoggerAspect {
-	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	// 前置通知
 	public static void before(Method method, Object[] args) {
 		if(args != null) {
 			String filePath = "src/spring/core/session5/dyn/log.txt";
-			String content = method.getName() + " " + Arrays.toString(args);
+			String content = sdf.format(new Date() + " " + method.getName() + " " + Arrays.toString(args));
 			try {
 				Files.write(
 						Paths.get(filePath), // 存檔路徑
