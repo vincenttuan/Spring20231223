@@ -39,7 +39,7 @@ public class MyLoggerAspect {
 	//@Before(value = "execution(* spring.core.session6.aop.*.*(..))")
 	//@Before(value = "execution(* *(..))")
 	//@Before(value = "ptAdd()")
-	//@Before(value = "ptAdd() && ptMul()")
+	//@Before(value = "ptAdd() || ptMul()")
 	//@Before(value = "ptAll() && !ptDiv()") // 切入點表達式支援邏輯運算子: &&, ||, !
 	public void beforeAdvice(JoinPoint joinPoint) {
 		String methodName = joinPoint.getSignature().getName(); // 方法名稱
