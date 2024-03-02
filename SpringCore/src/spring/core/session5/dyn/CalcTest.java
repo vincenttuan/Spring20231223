@@ -11,6 +11,7 @@ public class CalcTest {
 		Calc calc = (Calc)dynProxy.getProxy(); // 取得代理物件
 		System.out.println(calc.add(30, 23));
 		System.out.println(calc.div(20, 10));
+		System.out.println(calc.div(20, 0));
 		
 		//Person man = (Person)new DynProxy(new Man()).getProxy();
 		//man.work();
