@@ -28,6 +28,7 @@ public class DynProxy {
 			Object result = null;
 			// 公用方法: 前置通知
 			MyAspect.before(method, args);
+			MyLoggerAspect.before(method, args);
 			// 執行業務方法
 			try {
 				result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
