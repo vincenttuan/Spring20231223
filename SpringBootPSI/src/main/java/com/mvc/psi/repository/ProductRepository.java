@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.mvc.psi.model.po.Product;
 import com.mvc.psi.model.vo.Inventory;
+import com.mvc.psi.model.vo.ProductSales;
 
 @Repository
 public interface ProductRepository extends JpaRepository<Product, Long> {
@@ -22,4 +23,7 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "(select sum(amount) from order_item where product_id = p.id limit 1) as amount2 "
 			+ "from product p where p.id=:id ")
 	Inventory findInventoryById(Long id);
+	
+	@Query(nativeQuery = true, value="")
+	List<ProductSales> queryProductSales();
 }
