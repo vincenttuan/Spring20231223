@@ -1,20 +1,20 @@
-               Internet
-                |
-                | (WAN)
-          [ Gateway ]
-                | 
-                | (LAN)
-          [ Router ]-------------------[ Firewall ]
-                |
-                |
+                     Internet
+                        |
+                        | (WAN)
+                   [ Gateway ]                                大門
+                        | 
+                        | (LAN)
+                   [ Router ]-------------------[ Firewall ]  辦公室
+                        |
+                        |
        ---------------------------------------
        |                |                    |
        |                |                    |
-  [ Switch ]       [ Switch ]            [ Switch ]
+  [ Switch ]       [ Switch ]            [ Switch ]           部門/小房間
        |                |                    |
   -------------   -------------        -------------
   |     |     |   |     |     |        |     |     |
-[PC]  [PC]  [PC] [PC]  [PC]  [Printer] [PC]  [PC]  [Server]
+[PC]  [PC]  [PC] [PC]  [PC]  [Printer] [PC]  [PC]  [Server]   個人座位
   
 
 
