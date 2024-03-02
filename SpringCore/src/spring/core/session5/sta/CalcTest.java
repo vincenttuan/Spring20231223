@@ -15,6 +15,13 @@ public class CalcTest {
 		// add.calculate(null, null) --> 例外通知: x 不可是 null, 例外通知: y 不可是 null
 		// div.calculate(20, 0) --> 例外通知: 分母不可 = 0
 		
+		Calc add = new CalcProxy(new Add());
+		Calc div = new CalcProxy(new Div());
+		add.calculate(20, 10);
+		div.calculate(20, 10);
+		add.calculate(null, 10);
+		add.calculate(null, null);
+		div.calculate(20, 0);
 	}
 
 }
