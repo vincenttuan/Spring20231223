@@ -3,6 +3,7 @@ package spring.core.session5.dyn;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
+import java.util.Arrays;
 
 // 動態代理
 // 可以代理任何物件
@@ -25,7 +26,7 @@ public class DynProxy {
 		// 3. 處理代理的實現
 		InvocationHandler handler = (Object proxy, Method method, Object[] args) -> {
 			// 公用方法: 前置通知
-			System.out.println("進行前置通知程序...");
+			System.out.println("進行前置通知程序... 方法參數: " + Arrays.toString(args));
 			// 執行業務方法
 			Object result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
 			//System.out.println(result);
