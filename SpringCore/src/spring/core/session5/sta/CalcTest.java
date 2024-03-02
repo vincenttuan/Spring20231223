@@ -17,11 +17,11 @@ public class CalcTest {
 		
 		Calc add = new CalcProxy(new Add());
 		Calc div = new CalcProxy(new Div());
-		add.calculate(20, 10);
-		div.calculate(20, 10);
-		add.calculate(null, 10);
-		add.calculate(null, null);
-		div.calculate(20, 0);
+		System.out.println(add.calculate(20, 10));
+		System.out.println(div.calculate(20, 10));
+		System.out.println(add.calculate(null, 10));
+		System.out.println(add.calculate(null, null));
+		System.out.println(div.calculate(20, 0));
 	}
 
 }
