@@ -1,6 +1,7 @@
 package spring.core.session6.aop;
 
 import java.text.SimpleDateFormat;
+import java.util.Arrays;
 import java.util.Date;
 
 import org.aspectj.lang.JoinPoint;
@@ -46,7 +47,7 @@ public class MyLoggerAspect {
 		Object[] args = joinPoint.getArgs(); // 方法參數
 		String dateTime = sdf.format(new Date());
 		// log 紀錄
-		System.out.printf("Log 前置通知: %s %s %s%n", dateTime, methodName, args);
+		System.out.printf("Log 前置通知: %s %s %s%n", dateTime, methodName, Arrays.toString(args));
 	}
 	
 }
