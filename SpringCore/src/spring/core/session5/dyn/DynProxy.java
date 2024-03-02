@@ -25,13 +25,20 @@ public class DynProxy {
 		Class<?>[] interfaces = object.getClass().getInterfaces(); 
 		// 3. 處理代理的實現
 		InvocationHandler handler = (Object proxy, Method method, Object[] args) -> {
+			Object result = null;
 			// 公用方法: 前置通知
 			System.out.printf("進行前置通知程序... 方法: %s 方法參數: %s%n", method.getName(), Arrays.toString(args));
 			// 執行業務方法
-			Object result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
-			//System.out.println(result);
-			// 公用方法: 後置通知
-			System.out.println("進行後置通知程序...");
+			try {
+				result = method.invoke(object, args); // object: 被代理的物件, args: 方法參數
+				//System.out.println(result);
+			} catch (Throwable e) {
+				// 公用方法: 例外通知
+				System.out.println("進行例外通知 ... " + e);
+			} finally {
+				// 公用方法: 後置通知
+				System.out.println("進行後置通知程序...");
+			}
 			return result;
 		};
 		//newProxyInstance(ClassLoader loader, Class<?>[] interfaces, InvocationHandler handler) 
