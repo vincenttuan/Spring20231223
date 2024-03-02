@@ -17,7 +17,7 @@ public class MyLoggerAspect {
 	public static void before(Method method, Object[] args) {
 		if(args != null) {
 			String filePath = "src/spring/core/session5/dyn/log.txt";
-			String content = sdf.format(new Date()) + " " + method.getName() + " " + Arrays.toString(args);
+			String content = sdf.format(new Date()) + " " + method.getName() + " " + Arrays.toString(args) + "\n";
 			try {
 				Files.write(
 						Paths.get(filePath), // 存檔路徑
