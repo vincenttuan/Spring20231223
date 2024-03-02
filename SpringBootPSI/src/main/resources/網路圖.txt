@@ -19,14 +19,14 @@
 
 
   
-             Internet
-                |
-                | (WAN)
-          [ Gateway ]
-                | 
-                | (LAN)
-          [ Router 1 ]-------------------[ Firewall ]
-                |
+                     Internet
+                        |
+                        | (WAN)
+                   [ Gateway ]
+                        | 
+                        | (LAN)
+                   [ Router 1 ]-------------------[ Firewall ]
+                        |
        ---------------------------------------
        |                |                    |
        |                |                    |
