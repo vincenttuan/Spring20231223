@@ -24,9 +24,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 			+ "from product p where p.id=:id ")
 	Inventory findInventoryById(Long id);
 	
-	@Query(nativeQuery = true, value="select p.id, p.name, sum(o.amount) as total "
-			+ "from order_item o, product p "
-			+ "where o.product_id = p.id "
-			+ "group by p.id, p.name")
+	@Query(nativeQuery = true, value="SELECT p.id, p.name, coalesce(sum(o.amount), 0) AS total "
+			+ "FROM product p "
+			+ "LEFT JOIN order_item o ON p.id = o.product_id "
+			+ "GROUP BY p.id, p.name")
 	List<ProductSales> queryProductSales();
 }
