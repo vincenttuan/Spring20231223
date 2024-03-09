@@ -23,7 +23,7 @@ public class QuoteSimulator {
 	@PostConstruct
 	public void simulatorPriceUpdates() {
 		// 預設可以開通那些股票讓客戶端可以監聽
-		submit("^TWII");   // 可以透過 /topic/^TWII 來監聽到大盤加權股價資料
+		//submit("^TWII");   // 可以透過 /topic/^TWII 來監聽到大盤加權股價資料
 		submit("2330.TW"); // 可以透過 /topic/2330.TW 來監聽到大盤加權股價資料
 		submit("1101.TW"); // 可以透過 /topic/1101.TW 來監聽到大盤加權股價資料
 		submit("2303.TW"); // 可以透過 /topic/2303.TW 來監聽到大盤加權股價資料
@@ -46,7 +46,7 @@ public class QuoteSimulator {
 				}
 			}
 			
-		}).start();
+		});
 	}
 	
 }
