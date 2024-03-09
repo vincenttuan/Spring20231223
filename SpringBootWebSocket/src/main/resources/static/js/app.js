@@ -3,6 +3,7 @@ const url = 'ws://localhost:8080/spring-boot-websocket';
 // 訂閱
 const topic1 = "/topic/greetings";
 const topic2 = "/topic/servertime";
+const topic3 = "/topic/2330.TW";
 
 // 調用服務
 const app_register = "/app/register";
@@ -27,6 +28,9 @@ client.onConnect = (frame) => {
 	client.subscribe(topic2, (time) => {
 		console.log('收到消息: ' + time.body);
 		servertime.innerHTML = JSON.parse(time.body).content;
+	});
+	client.subscribe(topic3, (quote) => {
+		console.log('收到報價: ' + quote.body);
 	});
 };
 
