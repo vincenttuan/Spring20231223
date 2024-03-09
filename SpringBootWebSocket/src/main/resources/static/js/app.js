@@ -32,11 +32,17 @@ client.onConnect = (frame) => {
 function connect() {
 	client.activate();
 	console.log('Connected');
+	showDiv.style.display = "block";
+	buttonConnect.disabled = true;
+	buttonDisconnect.disabled = false;
 }
 
 function disconnect() {
 	client.deactivate();
 	console.log('Disconnected');
+	showDiv.style.display = "none";
+	buttonConnect.disabled = false;
+	buttonDisconnect.disabled = true;
 }
 
 function register() {
@@ -54,7 +60,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	buttonRegister = document.getElementById("register");
 	usernameInput = document.getElementById('username');
 	servertime = document.getElementById('servertime');
-	
+	showDiv = document.getElementById('show');
 	
 	buttonConnect.addEventListener("click", (e) => {
 		connect();

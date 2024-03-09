@@ -9,17 +9,23 @@
 	</head>
 	<body style="padding: 15px">
 		<h1>SpringBoot - WebSocket</h1>
-		<form id="form" class="pure-form">
+		
+		<form class="pure-form">
 			WebSocket connection:
 			<button id="connect" type="submit">Connect</button>
-			<button id="disconnect" type="submit">Disconnect</button>
+			<button id="disconnect" type="submit" disabled="disabled">Disconnect</button>
+		</form>
+		<!-- 以下是連線成功後才要顯示的資料 -->
+		<div id="show" style="display: 'none'">	
 			<p>
-			註冊帳號: <input type="text" id="username" placeholder="請輸入帳號" />
-			<button id="register" type="submit">註冊</button>
+			<form class="pure-form">
+				註冊帳號: <input type="text" id="username" placeholder="請輸入帳號" />
+				<button id="register" type="submit">註冊</button>
+				<p>
+			</form>
 			<p>
 			Server時間:
 			<div id="servertime"></div>
-		</form>
-		
+		</div>
 	</body>
 </html>
