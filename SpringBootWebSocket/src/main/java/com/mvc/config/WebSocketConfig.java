@@ -11,7 +11,7 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	
 	// 端點註冊
-	// registerStompEndpoints方法註冊了一個STOMP端點/spring-boot-tutorial，
+	// registerStompEndpoints方法註冊了一個STOMP端點/spring-boot-websocket，
 	// 客戶端將使用這個端點來連接WebSocket服務器。這個端點是STOMP客戶端與服務器進行交互的起點。
 	@Override
 	public void registerStompEndpoints(StompEndpointRegistry registry) {
