@@ -34,6 +34,7 @@ function disconnect() {
 }
 
 function register() {
+	// 發送
 	client.publish({
 		destincation: app_register,
 		body: JSON.stringify({'content': usernameInput.value})
