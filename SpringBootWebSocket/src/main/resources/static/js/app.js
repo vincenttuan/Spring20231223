@@ -34,9 +34,10 @@ function disconnect() {
 }
 
 function register() {
+	console.log('註冊...');
 	// 發送
 	client.publish({
-		destincation: app_register,
+		destination: app_register,
 		body: JSON.stringify({'content': usernameInput.value})
 	});
 }
