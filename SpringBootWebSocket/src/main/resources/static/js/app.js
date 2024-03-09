@@ -12,6 +12,8 @@ const client = new StompJs.Client({
 
 var buttonConnect;
 var buttonDisconnect;
+var buttonRegister;
+var usernameInput;
 
 client.onConnect = (frame) => {
 	console.log('Connected: ' + frame);
@@ -31,9 +33,17 @@ function disconnect() {
 	console.log('Disconnected');
 }
 
+function register() {
+	client.publish({
+		destincation: app_register,
+		body: JSON.stringify({'content': usernameInput.value})
+	});
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
+	usernameInput = document.getElementById('username');
 	
 	buttonConnect.addEventListener("click", (e) => {
 		connect();
@@ -42,6 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
 	
 	buttonDisconnect.addEventListener("click", (e) => {
 		disconnect();
+		e.preventDefault(); // 停止該元件預設行為
+	});
+	
+	buttonRegister.addEventListener("click", (e) => {
+		register();
 		e.preventDefault(); // 停止該元件預設行為
 	});
 	
