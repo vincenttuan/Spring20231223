@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 
 import com.mvc.model.Quote;
 
+// 主要工作: 建立事件 + 發佈價格變動的通知
 @Component
 public class QuoteUpdater {
 	
