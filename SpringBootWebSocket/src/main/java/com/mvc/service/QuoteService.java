@@ -42,7 +42,7 @@ public class QuoteService {
 			String low = lastRecord.get("Low");
 			String close = lastRecord.get("Close");
 			String volume = lastRecord.get("Volume");
-			return new Quote(date, open, high, low, close, volume);
+			return new Quote(symbol, date, open, high, low, close, volume);
 		}
 		return null;
 	}
