@@ -1,7 +1,5 @@
 package com.mvc.controller.event;
 
-import java.time.Clock;
-
 import org.springframework.context.ApplicationEvent;
 
 import com.mvc.model.Quote;
