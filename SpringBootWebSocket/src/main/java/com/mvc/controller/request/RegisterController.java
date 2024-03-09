@@ -16,6 +16,7 @@ public class RegisterController {
 	@Autowired
 	private SimpMessagingTemplate simpMessagingTemplate;
 	
+	// App 服務
 	@MessageMapping("/register")
 	// Message 收到的資料結構
 	// Greeting 回傳的資料結構
