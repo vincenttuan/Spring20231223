@@ -20,7 +20,8 @@ public class QuoteService {
 		 * Date     Open High Low Close Adj Close Volume
 		 * 2024/3/8 795  796  772 784   784       87139744
 		 * */
-		String url = String.format("https://query1.finance.yahoo.com/v7/finance/download/%s", "2330.TW");
+		String symbol = "3008.TW";
+		String url = String.format("https://query1.finance.yahoo.com/v7/finance/download/%s", symbol);
 		String csvData = new Scanner(new URL(url).openStream()).useDelimiter("\\A").next();
 		System.out.println(csvData);
 		// 解析 CSV 數據資料
@@ -37,6 +38,7 @@ public class QuoteService {
 			String high = lastRecord.get("High");
 			String low = lastRecord.get("Low");
 			String volume = lastRecord.get("Volume");
+			System.out.println(symbol);
 			System.out.println(date);
 			System.out.println(open);
 			System.out.println(high);
