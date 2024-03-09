@@ -13,6 +13,24 @@ const clinet = new StompJs.Client({
 var buttonConnect;
 var buttonDisconnect;
 
+client.onConnect = (frame) => {
+	console.log('Connected: ' + frame);
+	// 監聽所訂閱的資料
+	client.subscribe(topic1, (greeting) => {
+		console.log('收到消息: ' + greeting.body);
+	});
+};
+
+function connect() {
+	client.activate();
+	console.log('Connected');
+}
+
+function disconnect() {
+	client.deactivate();
+	console.log('Disconnected');
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
@@ -28,6 +46,3 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	
 });
-
-
-
