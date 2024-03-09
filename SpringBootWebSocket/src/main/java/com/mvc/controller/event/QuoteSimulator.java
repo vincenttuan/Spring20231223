@@ -35,6 +35,7 @@ public class QuoteSimulator {
 			
 			while(true) {
 				try {
+					// 取得最新報價
 					Quote quote = quoteService.getQuote(symbol);
 					// 更新報價
 					quoteUpdater.updatePrice(quote);
