@@ -6,7 +6,7 @@ const topic1 = "/topic/greetings";
 // 調用服務
 const app_register = "/app/register";
 
-const clinet = new StompJs.Client({
+const client = new StompJs.Client({
 	brokerURL: url
 });
 
