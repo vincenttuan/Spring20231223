@@ -8,6 +8,8 @@ import org.springframework.stereotype.Component;
 import com.mvc.model.Quote;
 import com.mvc.service.QuoteService;
 
+import jakarta.annotation.PostConstruct;
+
 // 此程式主要是模擬股票價格的變動
 @Component
 public class QuoteSimulator {
@@ -18,7 +20,15 @@ public class QuoteSimulator {
 	@Autowired
 	private QuoteUpdater quoteUpdater;
 	
-	
+	@PostConstruct
+	public void simulatorPriceUpdates() {
+		// 預設可以開通那些股票讓客戶端可以監聽
+		submit("^TWII");   // 可以透過 /topic/^TWII 來監聽到大盤加權股價資料
+		submit("2330.TW"); // 可以透過 /topic/2330.TW 來監聽到大盤加權股價資料
+		submit("1101.TW"); // 可以透過 /topic/1101.TW 來監聽到大盤加權股價資料
+		submit("2303.TW"); // 可以透過 /topic/2303.TW 來監聽到大盤加權股價資料
+		submit("3008.TW"); // 可以透過 /topic/3008.TW 來監聽到大盤加權股價資料
+	}
 	
 	public void submit(String symbol) {
 		Thread.startVirtualThread(() -> {
