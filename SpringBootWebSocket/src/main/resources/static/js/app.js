@@ -25,7 +25,7 @@ client.onConnect = (frame) => {
 	});
 	client.subscribe(topic2, (time) => {
 		console.log('收到消息: ' + time.body);
-		servertime.innerHTML = time.body;
+		servertime.innerHTML = JSON.parse(time.body).content;
 	});
 };
 
