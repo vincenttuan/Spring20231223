@@ -2,6 +2,7 @@ const url = 'ws://localhost:8080/spring-boot-websocket';
 
 // 訂閱
 const topic1 = "/topic/greetings";
+const topic2 = "/topic/servertime";
 
 // 調用服務
 const app_register = "/app/register";
@@ -14,12 +15,17 @@ var buttonConnect;
 var buttonDisconnect;
 var buttonRegister;
 var usernameInput;
+var servertime;
 
 client.onConnect = (frame) => {
 	console.log('Connected: ' + frame);
 	// 監聽所訂閱的資料
 	client.subscribe(topic1, (greeting) => {
 		console.log('收到消息: ' + greeting.body);
+	});
+	client.subscribe(topic2, (time) => {
+		console.log('收到消息: ' + time.body);
+		servertime.innerHTML = time.body;
 	});
 };
 
@@ -47,6 +53,8 @@ document.addEventListener("DOMContentLoaded", function() {
 	buttonDisconnect = document.getElementById("disconnect");
 	buttonRegister = document.getElementById("register");
 	usernameInput = document.getElementById('username');
+	servertime = document.getElementById('servertime');
+	
 	
 	buttonConnect.addEventListener("click", (e) => {
 		connect();
