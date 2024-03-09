@@ -13,9 +13,7 @@ public class QuoteUpdater {
 	private ApplicationEventPublisher eventPublisher;
 	
 	// 價格變動
-	public void updatePrice(String symbol, String date, String open, String high, String low, String close, String volume) {
-		// 建立報價物件
-		Quote quote = new Quote(symbol, date, open, high, low, close, volume);
+	public void updatePrice(Quote quote) {
 		// 建立事件
 		QuoteUpdateEvent event = new QuoteUpdateEvent(this, quote);
 		// 發佈事件
