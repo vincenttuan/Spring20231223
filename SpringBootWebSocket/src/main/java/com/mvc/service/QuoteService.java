@@ -3,6 +3,9 @@ package com.mvc.service;
 import java.net.URL;
 import java.util.Scanner;
 
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
 
 // 取得股價報價服務
@@ -20,7 +23,26 @@ public class QuoteService {
 		String url = String.format("https://query1.finance.yahoo.com/v7/finance/download/%s", "2330.TW");
 		String csvData = new Scanner(new URL(url).openStream()).useDelimiter("\\A").next();
 		System.out.println(csvData);
-		
+		// 解析 CSV 數據資料
+		CSVRecord lastRecord = null;
+		try(CSVParser parser = CSVParser.parse(csvData, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
+			for(CSVRecord record : parser) {
+				lastRecord = record; // 保留最後一筆
+			}
+		}
+		System.out.println(lastRecord);
+		if(lastRecord != null) {
+			String date = lastRecord.get("Date");
+			String open = lastRecord.get("Open");
+			String high = lastRecord.get("High");
+			String low = lastRecord.get("Low");
+			String volume = lastRecord.get("Volume");
+			System.out.println(date);
+			System.out.println(open);
+			System.out.println(high);
+			System.out.println(low);
+			System.out.println(volume);
+		}
 	}
 	
 }
