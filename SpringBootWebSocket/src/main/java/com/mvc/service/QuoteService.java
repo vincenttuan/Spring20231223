@@ -1,6 +1,7 @@
 package com.mvc.service;
 
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
 
 import org.apache.commons.csv.CSVFormat;
@@ -27,8 +28,9 @@ public class QuoteService {
 		// 解析 CSV 數據資料
 		CSVRecord lastRecord = null;
 		try(CSVParser parser = CSVParser.parse(csvData, CSVFormat.DEFAULT.withFirstRecordAsHeader())) {
-			for(CSVRecord record : parser) {
-				lastRecord = record; // 保留最後一筆
+			List<CSVRecord> records = parser.getRecords();
+			if(!records.isEmpty()) {
+				lastRecord = records.get(records.size() - 1);
 			}
 		}
 		System.out.println(lastRecord);
