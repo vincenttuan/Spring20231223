@@ -40,10 +40,14 @@ public class QuoteService {
 			String open = lastRecord.get("Open");
 			String high = lastRecord.get("High");
 			String low = lastRecord.get("Low");
+			String close = lastRecord.get("Close");
 			String volume = lastRecord.get("Volume");
-			return new Quote(csvData, open, high, low, low, volume);
+			return new Quote(date, open, high, low, close, volume);
 		}
 		return null;
 	}
 	
+	public static void main(String[] args) throws Exception {
+		System.out.println(new QuoteService().getQuote("2330.TW"));
+	}
 }
