@@ -44,6 +44,7 @@ function register() {
 document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
+	buttonRegister = document.getElementById("register");
 	usernameInput = document.getElementById('username');
 	
 	buttonConnect.addEventListener("click", (e) => {
