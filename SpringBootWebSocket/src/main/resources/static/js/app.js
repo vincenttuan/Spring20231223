@@ -38,7 +38,7 @@ function register() {
 	// 發送
 	client.publish({
 		destination: app_register,
-		body: JSON.stringify({'content': usernameInput.value})
+		body: JSON.stringify({content: usernameInput.value})
 	});
 }
 
