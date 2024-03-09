@@ -21,7 +21,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	// 消息代理配置
 	// configureMessageBroker方法配置了一個消息代理，以便在客戶端通過訂閱的方式接收服務器推送過來的消息。
 	// 這裡配置了一個簡單的消息代理，以/topic為前綴來標識訂閱的消息。
-	// 這樣客戶端只需要訂閱/topic/xxx這樣的地址就可以接收服務器推送過來的消息。
+	// 這樣客戶端只需要訂閱 "/topic/xxx" 這樣的地址就可以接收服務器推送過來的消息。
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		registry.enableSimpleBroker("/topic");
