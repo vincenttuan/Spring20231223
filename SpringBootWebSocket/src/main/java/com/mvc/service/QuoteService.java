@@ -38,7 +38,9 @@ public class QuoteService {
 			String value = spans.get(1).text().replace("%", "").replace(",", "").replace(" ", "").replace("\n", "");
 			priceMap.put(key, value);
 		});
-		Quote quote = new Quote(priceMap.get("最低"), 
+		Quote quote = new Quote(
+				symbol,
+				priceMap.get("最低"), 
 				priceMap.get("昨收"),
 				priceMap.get("漲跌"),
 				priceMap.get("最高"),
@@ -49,8 +51,7 @@ public class QuoteService {
 				priceMap.get("振幅"),
 				priceMap.get("開盤"),
 				priceMap.get("昨量"),
-				priceMap.get("總量")
-				);
+				priceMap.get("總量"));
 		return quote;
 	}
 	
@@ -89,5 +90,6 @@ public class QuoteService {
 		System.out.println(new QuoteService().getQuoteForYahooStock("2330.TW"));
 		System.out.println(new QuoteService().getQuoteForYahooStock("0050.TW"));
 		System.out.println(new QuoteService().getQuoteForYahooStock("^TWII.TW"));
+		System.out.println(new QuoteService().getQuoteForYahooStock("00632R.TW"));
 	}
 }
