@@ -102,7 +102,7 @@ function cancelOrderSymbol(symbol) {
 	var stockSymbol = symbol;
 	var stockTopic = "/topic/" + stockSymbol;
 	var quotesBody = document.getElementById("quotes-body");
-	var quoteRow = document.getElementById("row-" + quote.symbol);
+	var quoteRow = document.getElementById("row-" + symbol);
 	// 檢查是否存在於訂閱記錄檔中 ?
 	if(!subscriptions[stockSymbol]) {
 		console.log('無此訂閱: ' + stockSymbol);
