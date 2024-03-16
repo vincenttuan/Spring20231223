@@ -90,10 +90,10 @@ function updateQuoteList(quote) {
 	if(!quoteRow) { // 建立新 row
 		quoteRow = document.createElement('tr');
 		quoteRow.setAttribute('id', 'row-' + quote.symbol);
-		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td onclick='cancelOrderSymbol("${quote.symbol}")'>X</td><td></td><td></td>`;
+		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td style='cursor: pointer' title='按我一下可以移除' onclick='cancelOrderSymbol("${quote.symbol}")'>X</td><td></td><td></td>`;
 		quotesBody.appendChild(quoteRow);
 	} else { // 更新 row
-		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td onclick='cancelOrderSymbol("${quote.symbol}")'>X</td><td></td><td></td>`;
+		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td style='cursor: pointer' title='按我一下可以移除' onclick='cancelOrderSymbol("${quote.symbol}")'>X</td><td></td><td></td>`;
 	}
 }
 
