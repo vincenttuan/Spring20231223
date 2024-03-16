@@ -22,7 +22,7 @@ import com.mvc.model.Quote;
 @Service
 public class QuoteService {
 	
-	public Quote getQuoteForYahooStock(String symbol) throws Exception {
+	public synchronized Quote getQuoteForYahooStock(String symbol) throws Exception {
 		String url = "https://tw.stock.yahoo.com/quote/" + symbol;
 		Document doc = null;
 		try {
