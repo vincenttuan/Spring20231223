@@ -4,9 +4,12 @@ const url = 'ws://localhost:8080/spring-boot-websocket';
 const topic1 = "/topic/greetings";
 const topic2 = "/topic/servertime";
 const topic3 = "/topic/^TWII";
+const queue1 = "/user/queue/commission-return";
+const queue2 = "/user/queue/transaction-return";
 
 // 調用服務
 const app_register = "/app/register";
+const app_order = "/app/order-cr"
 
 const client = new StompJs.Client({
 	brokerURL: url
