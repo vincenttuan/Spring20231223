@@ -22,10 +22,13 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 	// configureMessageBroker方法配置了一個消息代理，以便在客戶端通過訂閱的方式接收服務器推送過來的消息。
 	// 這裡配置了一個簡單的消息代理，以/topic為前綴來標識訂閱的消息。
 	// 這樣客戶端只需要訂閱 "/topic/xxx" 這樣的地址就可以接收服務器推送過來的消息。
+	// "/topic/xxx" 公用訂閱通道
+	// "/queue/xxx" 私人訂閱通道 (/user/queue/xxx) /user 是預設的前置詞
 	@Override
 	public void configureMessageBroker(MessageBrokerRegistry registry) {
 		registry.enableSimpleBroker("/topic", "/queue");
 		registry.setApplicationDestinationPrefixes("/app");
+		//registry.setUserDestinationPrefix("/user") // 預設
 	}
 	
 	
