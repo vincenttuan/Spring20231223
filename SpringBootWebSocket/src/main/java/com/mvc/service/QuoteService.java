@@ -1,7 +1,9 @@
 package com.mvc.service;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 import org.apache.commons.csv.CSVFormat;
@@ -60,7 +62,16 @@ public class QuoteService {
 		Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
 		// 找到 <ul> 下的 <li class="price-detail-item"> 前面幾個字是 price-detail-item 的元素
 		Elements elements = doc.select("ul > li.price-detail-item");
-		System.out.println(elements);
-		
+		//System.out.println(elements);
+		// 過濾 html tag
+		Map<String, String> priceMap = new HashMap<>();
+		elements.forEach(e -> {
+			// e 裡面有 2 個 <span> 分別印出 text
+			Elements spans = e.select("span");
+			String key = spans.get(0).text().replace(" ", "").replace("\n", "");
+			String value = spans.get(1).text().replace("%", "").replace(",", "").replace(" ", "").replace("\n", "");
+			priceMap.put(key, value);
+		});
+		System.out.println(priceMap);
 	}
 }
