@@ -32,18 +32,18 @@ public class QuoteService {
 			Random rand = new Random();
 			return new Quote(
 					symbol,
-					rand.nextInt(100) + "", 
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "",
-					rand.nextInt(100) + "");
+					rand.nextInt(1000) + "", 
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "",
+					rand.nextInt(1000) + "");
 		}
 		
 		//Document doc = Jsoup.connect(url).get();
