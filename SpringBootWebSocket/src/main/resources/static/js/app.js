@@ -79,7 +79,7 @@ function orderSymbol() {
 	
 	subscriptions[stockSymbol] = client.subscribe(stockTopic, (quoteResponse) => {
 		var quote = JSON.parse(quoteResponse.body);
-		console.log("收到股票資料" + quote);
+		console.log("收到訂閱的股票資料: " + quote);
 	});
 	
 	 
