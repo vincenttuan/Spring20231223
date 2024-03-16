@@ -51,7 +51,7 @@ public class QuoteService {
 			String low = lastRecord.get("Low");
 			String close = lastRecord.get("Close");
 			String volume = lastRecord.get("Volume");
-			return new Quote(symbol, date, open, high, low, close, volume);
+			return null; // new Quote(symbol, date, open, high, low, close, volume);
 		}
 		return null;
 	}
@@ -75,6 +75,19 @@ public class QuoteService {
 			priceList.add(value);
 		});
 		System.out.println(priceList);
+		Quote quote = new Quote(priceList.get(0), 
+				priceList.get(1), 
+				priceList.get(2), 
+				priceList.get(3), 
+				priceList.get(4), 
+				priceList.get(5), 
+				priceList.get(6), 
+				priceList.get(7), 
+				priceList.get(8), 
+				priceList.get(9), 
+				priceList.get(10), 
+				priceList.get(11));
+		System.out.println(quote);
 		//{最低=753, 昨收=784, 漲跌=31.00, 最高=777, 成交=753, 均價=762, 成交金額(億)=558.06, 漲跌幅=3.95, 振幅=3.06, 開盤=771, 昨量=41961, 總量=73222}
 		
 	}
