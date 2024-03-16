@@ -97,6 +97,29 @@ function updateQuoteList(quote) {
 	}
 }
 
+function cancelOrderSymbol(symbol) {
+	console.log('取消股票訂閱: ' + symbol);
+	var stockSymbol = symbol;
+	var stockTopic = "/topic/" + stockSymbol;
+	var quotesBody = document.getElementById("quotes-body");
+	var quoteRow = document.getElementById("row-" + quote.symbol);
+	// 檢查是否存在於訂閱記錄檔中 ?
+	if(!subscriptions[stockSymbol]) {
+		console.log('無此訂閱: ' + stockSymbol);
+		return;
+	}
+	
+	// 取消訂閱
+	subscriptions[stockSymbol].unsubscribe(); 
+	
+	// 刪除紀錄
+	if(quoteRow) {
+		quotesBody.removeChild(quoteRow);
+	}
+	
+	delete subscriptions[stockSymbol]; // 從映射中移除訂閱參考 
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
