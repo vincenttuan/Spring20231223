@@ -39,6 +39,12 @@ client.onConnect = (frame) => {
 		quote = JSON.parse(quote.body);
 		document.getElementById('twii').innerHTML = "指數:" + quote.成交 + " 漲跌:" + quote.漲跌 + " 漲跌幅:" + quote.漲跌幅;
 	});
+	client.subscribe(queue1, (commissionReturn) => {
+		console.log('委託回報: ' + commissionReturn.body);
+	});
+	client.subscribe(queue2, (transactionReturn) => {
+		console.log('成交回報: ' + transactionReturn.body);
+	});
 };
 
 function connect() {
