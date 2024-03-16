@@ -30,7 +30,9 @@ client.onConnect = (frame) => {
 	client.subscribe(topic1, (greeting) => {
 		console.log('收到消息: ' + greeting.body);
 		var messageDisplay = document.getElementById('message-display');
-		messageDisplay.innerHTML = greeting.body;
+		//messageDisplay.innerHTML = greeting.body;
+		var greeting = JSON.parse(greeting.body);
+		messageDisplay.insertAdjacentHTML('afterend', greeting.content + '<br>');
 	});
 	client.subscribe(topic2, (time) => {
 		console.log('收到消息: ' + time.body);
