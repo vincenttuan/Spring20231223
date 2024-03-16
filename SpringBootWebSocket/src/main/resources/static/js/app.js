@@ -3,7 +3,7 @@ const url = 'ws://localhost:8080/spring-boot-websocket';
 // 訂閱
 const topic1 = "/topic/greetings";
 const topic2 = "/topic/servertime";
-const topic3 = "/topic/2330.TW";
+const topic3 = "/topic/^TWII";
 
 // 調用服務
 const app_register = "/app/register";
