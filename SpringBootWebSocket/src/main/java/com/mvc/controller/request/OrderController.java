@@ -24,6 +24,7 @@ public class OrderController {
 	// 下委託單
 	@MessageMapping("/order-cr") // WS-Client 透過 /app/order-cr 發送訊息
 	public void orderCR(Order order, Principal principal) throws Exception {
+		// principal 裡面包含 spring-security 的登入帳戶資訊
 		System.out.println("委託單: " + order);
 		// 建立委託單物件
 		String orderId = sysOrderId.incrementAndGet() + "";
