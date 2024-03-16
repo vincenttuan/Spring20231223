@@ -56,6 +56,20 @@ client.onConnect = (frame) => {
 	});
 	client.subscribe(queue2, (transactionReturn) => {
 		console.log('成交回報: ' + transactionReturn.body);
+		var tx = JSON.parse(transactionReturn.body);
+		var txBody = document.getElementById('transaction-return-body');
+		var txRow = document.createElement('tr');
+		txRow.innerHTML = `<td>${tx.orderId}</td>
+						   <td>${tx.status}</td>
+						   <td>${tx.time}</td>
+						   <td>${tx.cr.orderId}</td>
+						   <td>${tx.cr.order.bs}</td>
+						   <td>${tx.cr.order.symbol}</td>
+						   <td>${tx.cr.order.price}</td>
+						   <td>${tx.price}</td>
+						   <td>${tx.cr.order.amount}</td>
+						   <td>${tx.amount}</td>`;
+		txBody.appendChild(txRow);
 	});
 };
 
