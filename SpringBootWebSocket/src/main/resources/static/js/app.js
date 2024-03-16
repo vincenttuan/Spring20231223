@@ -134,12 +134,34 @@ function cancelOrderSymbol(symbol) {
 	delete subscriptions[stockSymbol];  
 }
 
-function buyOrder(symbol, price){
-	console.log(`買進 ${symbol} 價格: ${price}`);
+// 下單傳送
+function createAndPublishOrder(bs, symbol, price, amount = 1) {
+	// 買賣方向, 股票代號, 價格, 數量 
+	var order = {
+		'bs': bs,
+		'symbol': symbol,
+		'price': price,
+		'amount': amount
+	};
+	
+	console.log('下單: ' + JSON.stringify(order));
+	
+	client.publish({
+		destination: app_order,
+		body: JSON.stringify(order)	
+	});
 }
 
+// 買單
+function buyOrder(symbol, price){
+	console.log(`買進 ${symbol} 價格: ${price}`);
+	createAndPublishOrder('B', symbol, price);
+}
+
+// 賣單
 function sellOrder(symbol, price){
 	console.log(`賣出 ${symbol} 價格: ${price}`);
+	createAndPublishOrder('S', symbol, price);
 }
 
 document.addEventListener("DOMContentLoaded", function() {
