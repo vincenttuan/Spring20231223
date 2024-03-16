@@ -22,10 +22,39 @@ import com.mvc.model.Quote;
 public class QuoteService {
 	
 	public Quote getQuoteForYahooStock(String symbol) throws Exception {
-		return null;
+		String url = "https://tw.stock.yahoo.com/quote/" + symbol;
+		// 注意：因為要掠過 SSL 驗證建議使用 jsoup 1.11.1, 之後的版本會有問題
+		Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
+		//Document doc = Jsoup.connect(url).get();
+		// 找到 <ul> 下的 <li class="price-detail-item"> 前面幾個字是 price-detail-item 的元素
+		Elements elements = doc.select("ul > li.price-detail-item");
+		//System.out.println(elements);
+		// 過濾 html tag
+		Map<String, String> priceMap = new HashMap<>();
+		elements.forEach(e -> {
+			// e 裡面有 2 個 <span> 分別印出 text
+			Elements spans = e.select("span");
+			String key = spans.get(0).text().replace(" ", "").replace("\n", "");
+			String value = spans.get(1).text().replace("%", "").replace(",", "").replace(" ", "").replace("\n", "");
+			priceMap.put(key, value);
+		});
+		Quote quote = new Quote(priceMap.get("最低"), 
+				priceMap.get("昨收"),
+				priceMap.get("漲跌"),
+				priceMap.get("最高"),
+				priceMap.get("成交"),
+				priceMap.get("均價"),
+				priceMap.get("成交金額"),
+				priceMap.get("漲跌幅"),
+				priceMap.get("振幅"),
+				priceMap.get("開盤"),
+				priceMap.get("昨量"),
+				priceMap.get("總量")
+				);
+		return quote;
 	}
 	
-	public Quote getQuoteForYahooFinance(String symbol) throws Exception {
+	private Quote getQuoteForYahooFinance(String symbol) throws Exception {
 		/*
 		 * 股票交易資訊
 		 * https://query1.finance.yahoo.com/v7/finance/download/2330.TW
@@ -57,38 +86,8 @@ public class QuoteService {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		
-		String url = "https://tw.stock.yahoo.com/quote/2330.TW";
-		// 注意：因為要掠過 SSL 驗證建議使用 jsoup 1.11.1, 之後的版本會有問題
-		Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
-		//Document doc = Jsoup.connect(url).get();
-		// 找到 <ul> 下的 <li class="price-detail-item"> 前面幾個字是 price-detail-item 的元素
-		Elements elements = doc.select("ul > li.price-detail-item");
-		//System.out.println(elements);
-		// 過濾 html tag
-		List<String> priceList = new ArrayList<>();
-		elements.forEach(e -> {
-			// e 裡面有 2 個 <span> 分別印出 text
-			Elements spans = e.select("span");
-			//String key = spans.get(0).text().replace(" ", "").replace("\n", "");
-			String value = spans.get(1).text().replace("%", "").replace(",", "").replace(" ", "").replace("\n", "");
-			priceList.add(value);
-		});
-		System.out.println(priceList);
-		Quote quote = new Quote(priceList.get(0), 
-				priceList.get(1), 
-				priceList.get(2), 
-				priceList.get(3), 
-				priceList.get(4), 
-				priceList.get(5), 
-				priceList.get(6), 
-				priceList.get(7), 
-				priceList.get(8), 
-				priceList.get(9), 
-				priceList.get(10), 
-				priceList.get(11));
-		System.out.println(quote);
-		//{最低=753, 昨收=784, 漲跌=31.00, 最高=777, 成交=753, 均價=762, 成交金額(億)=558.06, 漲跌幅=3.95, 振幅=3.06, 開盤=771, 昨量=41961, 總量=73222}
-		
+		System.out.println(new QuoteService().getQuoteForYahooStock("2330.TW"));
+		System.out.println(new QuoteService().getQuoteForYahooStock("0050.TW"));
+		System.out.println(new QuoteService().getQuoteForYahooStock("^TWII.TW"));
 	}
 }
