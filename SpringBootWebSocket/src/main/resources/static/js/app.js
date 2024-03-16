@@ -131,8 +131,8 @@ function updateQuoteList(quote) {
 					<td>${quote.成交}</td>
 					<td>${quote.總量}</td>
 					<td style='cursor: pointer' title='按我一下可以移除' onclick='cancelOrderSymbol("${quote.symbol}")'>X</td>
-					<td style='cursor: pointer' title='按我一下可以買進' onclick='buyOrder("${quote.symbol}", ${quote.price})'>買進</td>
-					<td style='cursor: pointer' title='按我一下可以賣出' onclick='sellOrder("${quote.symbol}", ${quote.price})'>賣出</td>`;
+					<td style='cursor: pointer' title='按我一下可以買進' onclick='buyOrder("${quote.symbol}", ${quote.成交})'>買進</td>
+					<td style='cursor: pointer' title='按我一下可以賣出' onclick='sellOrder("${quote.symbol}", ${quote.成交})'>賣出</td>`;
 
 }
 
@@ -161,15 +161,15 @@ function cancelOrderSymbol(symbol) {
 }
 
 // 下單傳送
-function createAndPublishOrder(bs, symbol, price, amount = 1) {
+function createAndPublishOrder(buyOrSell, stockSymbol, stockPrice, stockAmount = 1) {
 	// 買賣方向, 股票代號, 價格, 數量 
 	var order = {
-		'bs': bs,
-		'symbol': symbol,
-		'price': price,
-		'amount': amount
+		bs: buyOrSell,
+		symbol: stockSymbol,
+		price: stockPrice,
+		amount: stockAmount
 	};
-	
+	alert(JSON.stringify(order));
 	console.log('下單: ' + JSON.stringify(order));
 	
 	client.publish({
