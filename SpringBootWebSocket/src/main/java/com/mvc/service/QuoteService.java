@@ -7,6 +7,9 @@ import java.util.Scanner;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.select.Elements;
 import org.springframework.stereotype.Service;
 
 import com.mvc.model.Quote;
@@ -52,7 +55,12 @@ public class QuoteService {
 	
 	public static void main(String[] args) throws Exception {
 		
-		
+		String url = "https://tw.stock.yahoo.com/quote/2330.TW";
+		// 注意：因為要掠過 SSL 驗證建議使用 jsoup 1.11.1, 之後的版本會有問題
+		Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
+		// 找到 <ul> 下的 <li class="price-detail-item"> 前面幾個字是 price-detail-item 的元素
+		Elements elements = doc.select("ul > li.price-detail-item");
+		System.out.println(elements);
 		
 	}
 }
