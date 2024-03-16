@@ -1,6 +1,7 @@
 package com.mvc.service;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -65,14 +66,16 @@ public class QuoteService {
 		Elements elements = doc.select("ul > li.price-detail-item");
 		//System.out.println(elements);
 		// 過濾 html tag
-		Map<String, String> priceMap = new HashMap<>();
+		List<String> priceList = new ArrayList<>();
 		elements.forEach(e -> {
 			// e 裡面有 2 個 <span> 分別印出 text
 			Elements spans = e.select("span");
-			String key = spans.get(0).text().replace(" ", "").replace("\n", "");
+			//String key = spans.get(0).text().replace(" ", "").replace("\n", "");
 			String value = spans.get(1).text().replace("%", "").replace(",", "").replace(" ", "").replace("\n", "");
-			priceMap.put(key, value);
+			priceList.add(value);
 		});
-		System.out.println(priceMap);
+		System.out.println(priceList);
+		//{最低=753, 昨收=784, 漲跌=31.00, 最高=777, 成交=753, 均價=762, 成交金額(億)=558.06, 漲跌幅=3.95, 振幅=3.06, 開盤=771, 昨量=41961, 總量=73222}
+		
 	}
 }
