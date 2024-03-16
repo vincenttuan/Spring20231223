@@ -78,8 +78,8 @@ function orderSymbol() {
 	}
 	
 	subscriptions[stockSymbol] = client.subscribe(stockTopic, (quoteResponse) => {
+		console.log("收到訂閱的股票資料: " + quoteResponse.body);
 		var quote = JSON.parse(quoteResponse.body);
-		console.log("收到訂閱的股票資料: " + quote);
 	});
 	
 	 
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	});
 	
 	// 取消股票訂閱
-	buttonOrderSymbol.addEventListener("click", (e) => {
+	buttonCancelSymbol.addEventListener("click", (e) => {
 		cancelSymbol();
 		e.preventDefault(); // 停止該元件預設行為
 	});
