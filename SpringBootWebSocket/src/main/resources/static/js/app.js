@@ -31,6 +31,7 @@ client.onConnect = (frame) => {
 	});
 	client.subscribe(topic3, (quote) => {
 		console.log('收到報價: ' + quote.body);
+		document.getElementById('twii').innerHTML = quote.成交 + " " + quote.漲跌 + " " + quote.漲跌幅;
 	});
 };
 
