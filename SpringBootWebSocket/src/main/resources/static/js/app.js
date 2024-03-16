@@ -80,9 +80,21 @@ function orderSymbol() {
 	subscriptions[stockSymbol] = client.subscribe(stockTopic, (quoteResponse) => {
 		console.log("收到訂閱的股票資料: " + quoteResponse.body);
 		var quote = JSON.parse(quoteResponse.body);
-	});
-	
-	 
+		updateQuoteList(quote); // 更新列表資訊
+	}); 
+}
+
+function updateQuoteList(quote) {
+	var quotesBody = document.getElementById("quotes-body");
+	var quoteRow = document.getElementById("row-" + quote.symbol);
+	if(!quoteRow) { // 建立新 row
+		quoteRow = document.createElement('tr');
+		quoteRow.setAttribute('id', 'row-' + quote.symbol);
+		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td></td><td></td><td></td>`;
+		quotesBody.appendChild(quoteRow);
+	} else { // 更新 row
+		quoteRow.innerHTML = `<td>${quote.symbol}</td><td>${quote.成交}</td><td>${quote.總量}</td><td></td><td></td><td></td>`;
+	}
 }
 
 document.addEventListener("DOMContentLoaded", function() {
