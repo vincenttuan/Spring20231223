@@ -74,6 +74,9 @@ document.addEventListener("DOMContentLoaded", function() {
 	servertime = document.getElementById('servertime');
 	showDiv = document.getElementById('show');
 	
+	buttonOrderSymbol = document.getElementById('order_symbol');
+	buttonCancelSymbol = document.getElementById('cancel_symbol');
+	
 	buttonConnect.addEventListener("click", (e) => {
 		connect();
 		e.preventDefault(); // 停止該元件預設行為
@@ -88,6 +91,19 @@ document.addEventListener("DOMContentLoaded", function() {
 		register();
 		e.preventDefault(); // 停止該元件預設行為
 	});
+	
+	// 股票訂閱
+	buttonOrderSymbol.addEventListener("click", (e) => {
+		orderSymbol();
+		e.preventDefault(); // 停止該元件預設行為
+	});
+	
+	// 取消股票訂閱
+	buttonOrderSymbol.addEventListener("click", (e) => {
+		cancelSymbol();
+		e.preventDefault(); // 停止該元件預設行為
+	});
+	
 	
 	setConnected(false);
 });
