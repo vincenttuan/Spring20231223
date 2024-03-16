@@ -20,7 +20,7 @@ var subscriptions = {}; // 存儲訂閱的物件
 var buttonConnect;
 var buttonDisconnect;
 var buttonRegister;
-var usernameInput;
+var usermessageInput;
 var servertime;
 
 client.onConnect = (frame) => {
@@ -29,6 +29,8 @@ client.onConnect = (frame) => {
 	// 監聽所訂閱的資料
 	client.subscribe(topic1, (greeting) => {
 		console.log('收到消息: ' + greeting.body);
+		var messageDisplay = document.getElementById('message-display');
+		messageDisplay.innerHTML = greeting.body;
 	});
 	client.subscribe(topic2, (time) => {
 		console.log('收到消息: ' + time.body);
@@ -95,11 +97,11 @@ function setConnected(connected) {
 }
 
 function register() {
-	console.log('註冊...');
+	console.log('message...');
 	// 發送
 	client.publish({
 		destination: app_register,
-		body: JSON.stringify({content: usernameInput.value})
+		body: JSON.stringify({content: usermessageInput.value})
 	});
 }
 
@@ -194,7 +196,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
 	buttonRegister = document.getElementById("register");
-	usernameInput = document.getElementById('username');
+	usermessageInput = document.getElementById('usermessage');
 	servertime = document.getElementById('servertime');
 	showDiv = document.getElementById('show');
 	
