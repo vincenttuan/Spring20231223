@@ -71,6 +71,16 @@ function register() {
 function orderSymbol() {
 	var stockSymbol = symbolInput.value;
 	var stockTopic = "/topic/" + stockSymbol;
+	// 檢查是否已經訂閱
+	if(subscriptions[stockSymbol]) {
+		console.log('已經訂閱:' + stockTopic);
+		return;
+	}
+	
+	subscriptions[stockSymbol] = client.subscribe(stockTopic, (quoteResponse) => {
+		var quote = JSON.parse(quoteResponse.body);
+		console.log("收到股票資料" + quote);
+	});
 	
 	 
 }
