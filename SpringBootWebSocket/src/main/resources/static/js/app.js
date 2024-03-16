@@ -41,6 +41,18 @@ client.onConnect = (frame) => {
 	});
 	client.subscribe(queue1, (commissionReturn) => {
 		console.log('委託回報: ' + commissionReturn.body);
+		var cr = JSON.parse(commissionReturn.body);
+		var crBody = document.getElementById('commission-return-body');
+		var crRow = document.createElement('tr');
+		crRow.innerHTML = `<td>${cr.orderId}</td>
+						   <td>${cr.status}</td>
+						   <td>${cr.time}</td>
+						   <td>${cr.order.bs}</td>
+						   <td>${cr.order.symbol}</td>
+						   <td>${cr.order.price}</td>
+						   <td>${cr.order.amount}</td>`;
+		crBody.appendChild(crRow);
+		
 	});
 	client.subscribe(queue2, (transactionReturn) => {
 		console.log('成交回報: ' + transactionReturn.body);
