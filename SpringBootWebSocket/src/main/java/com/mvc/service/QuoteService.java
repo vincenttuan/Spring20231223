@@ -15,8 +15,11 @@ import com.mvc.model.Quote;
 @Service
 public class QuoteService {
 	
+	public Quote getQuoteForYahooStock(String symbol) throws Exception {
+		return null;
+	}
 	
-	public Quote getQuote(String symbol) throws Exception {
+	public Quote getQuoteForYahooFinance(String symbol) throws Exception {
 		/*
 		 * 股票交易資訊
 		 * https://query1.finance.yahoo.com/v7/finance/download/2330.TW
@@ -48,6 +51,8 @@ public class QuoteService {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		System.out.println(new QuoteService().getQuote("2330.TW"));
+		
+		
+		
 	}
 }
