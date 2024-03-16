@@ -30,25 +30,28 @@
 			<p>
 			台灣加權股價指數:
 			<div id="twii"></div>
-			<p></p>Quotes:
-            <form>
-                <div>
+			<p />
+            <form class="pure-form">
+                <fieldset>
+                	<legend>Quotes:</legend>
                     <label for="name">股票代號(例如:2330.TW) </label>
                     <input type="text" id="symbol" placeholder="Your symbol here...">
-                    <button id="order" type="submit">訂閱</button>
-                    <button id="cancel" type="submit">取消訂閱</button>
-                </div>
+                    <button id="order" type="submit" class="pure-button pure-button-primary">訂閱</button>
+                    <button id="cancel" type="submit" class="pure-button">取消訂閱</button>
+                </fieldset>
             </form>
-            <table id="quotes" border="1">
+            <p />
+            Quotes WatchList
+            <table id="quotes" class="pure-table pure-table-bordered">
                 <thead>
-                <tr>
-                    <th>股票代號</th>
-                    <th>成交價</th>
-                    <th>成交量</th>
-                    <th>移除</th>
-                    <th>買進</th>
-                    <th>賣出</th>
-                </tr>
+	                <tr>
+	                    <th>股票代號</th>
+	                    <th>成交價</th>
+	                    <th>成交量</th>
+	                    <th>移除</th>
+	                    <th>買進</th>
+	                    <th>賣出</th>
+	                </tr>
                 </thead>
                 <tbody id="quotes-body">
 					<!-- Quotes will be added or update here -->
