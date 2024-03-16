@@ -12,6 +12,8 @@ const client = new StompJs.Client({
 	brokerURL: url
 });
 
+var subscriptions = {}; // 存儲訂閱的物件
+
 var buttonConnect;
 var buttonDisconnect;
 var buttonRegister;
@@ -64,6 +66,13 @@ function register() {
 		destination: app_register,
 		body: JSON.stringify({content: usernameInput.value})
 	});
+}
+
+function orderSymbol() {
+	var stockSymbol = symbolInput.value;
+	var stockTopic = "/topic/" + stockSymbol;
+	
+	 
 }
 
 document.addEventListener("DOMContentLoaded", function() {
