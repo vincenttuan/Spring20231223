@@ -2,6 +2,7 @@ package com.mvc.controller.request;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Controller;
 
 import com.mvc.model.CommissionReturn;
 import com.mvc.model.Order;
+import com.mvc.model.TransactionReturn;
 
 @Controller
 public class OrderController {
@@ -33,6 +35,25 @@ public class OrderController {
 		// 設定委託回報給指定使用者
 		//messagingTemplate.convertAndSend("/topic/commission-return", commissionReturn); // 公開回報
 		messagingTemplate.convertAndSendToUser(principal.getName(), "/queue/commission-return", commissionReturn);
+		
+		// 模擬交易搓合
+		new Thread(() -> {
+			try {
+				Thread.sleep(new Random().nextInt(5000));
+				// 建立成交單物件
+				String txId = sysTxId.incrementAndGet() + "";
+				String txTime = LocalDateTime.now().toString();
+				Double txPrice = order.price();
+				Integer txAmount = order.amount();
+				TransactionReturn transactionReturn = new TransactionReturn(txId, "全部成交", txTime, txPrice, txAmount, commissionReturn);
+				// 設定成交回報給指定使用者
+				messagingTemplate.convertAndSendToUser(principal.getName(), "/queue/transaction-return", transactionReturn);
+				
+			} catch (Exception e) {
+				
+			}
+		}).start();
+		
 	}
 	
 }
