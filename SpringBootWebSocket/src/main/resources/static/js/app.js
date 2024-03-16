@@ -74,6 +74,7 @@ document.addEventListener("DOMContentLoaded", function() {
 	servertime = document.getElementById('servertime');
 	showDiv = document.getElementById('show');
 	
+	symbolInput = document.getElementById('symbol');
 	buttonOrderSymbol = document.getElementById('order_symbol');
 	buttonCancelSymbol = document.getElementById('cancel_symbol');
 	
