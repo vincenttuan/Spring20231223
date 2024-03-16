@@ -88,6 +88,7 @@ public class QuoteService {
 	
 	public static void main(String[] args) throws Exception {
 		System.out.println(new QuoteService().getQuoteForYahooStock("2330.TW"));
+		System.out.println(new QuoteService().getQuoteForYahooStock("2388"));
 		System.out.println(new QuoteService().getQuoteForYahooStock("0050.TW"));
 		System.out.println(new QuoteService().getQuoteForYahooStock("^TWII.TW"));
 		System.out.println(new QuoteService().getQuoteForYahooStock("00632R.TW"));

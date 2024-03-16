@@ -23,11 +23,13 @@ public class QuoteSimulator {
 	@PostConstruct
 	public void simulatorPriceUpdates() {
 		// 預設可以開通那些股票讓客戶端可以監聽
-		//submit("^TWII");   // 可以透過 /topic/^TWII 來監聽到大盤加權股價資料
-		submit("2330.TW"); // 可以透過 /topic/2330.TW 來監聽到大盤加權股價資料
-		submit("1101.TW"); // 可以透過 /topic/1101.TW 來監聽到大盤加權股價資料
-		submit("2303.TW"); // 可以透過 /topic/2303.TW 來監聽到大盤加權股價資料
-		submit("3008.TW"); // 可以透過 /topic/3008.TW 來監聽到大盤加權股價資料
+		submit("^TWII");   // 可以透過 /topic/^TWII 來監聽到大盤加權股價資料
+		submit("2330.TW"); // 可以透過 /topic/2330.TW 來監聽到個股股價資料
+		submit("1101.TW"); // 可以透過 /topic/1101.TW 
+		submit("2303.TW"); // 可以透過 /topic/2303.TW 
+		submit("3008.TW"); // 可以透過 /topic/3008.TW 
+		submit("0050.TW"); // 可以透過 /topic/0050.TW 
+		submit("00632R.TW"); // 可以透過 /topic/00632R.TW 
 	}
 	
 	public void submit(String symbol) {
@@ -36,7 +38,7 @@ public class QuoteSimulator {
 			while(true) {
 				try {
 					// 取得最新報價
-					Quote quote = quoteService.getQuote(symbol);
+					Quote quote = quoteService.getQuoteForYahooStock(symbol);
 					// 更新報價
 					quoteUpdater.updatePrice(quote);
 					// 模擬延遲
