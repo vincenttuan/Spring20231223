@@ -29,8 +29,7 @@ public class WebSecurityConfig {
                 .requestMatchers("/", "/index.html", "/hello").hasAnyRole("USER", "ADMIN") // USER和ADMIN角色可以访问/和/hello
                 .anyRequest().authenticated()) // 要求所有其他請求都必須經過認證
             .formLogin(form -> form.permitAll()) // 允許所有用戶訪問表單登錄頁面
-            .logout(logout -> logout.logoutSuccessUrl("/logout.html") // 登出成功後跳轉到 /login
-             )
+            .logout(logout -> logout.logoutSuccessUrl("/logout.html")) // 登出成功後跳轉到 /login
             .cors(Customizer.withDefaults()); // 啟用CORS（跨域資源共享），使用預設配置
 
         return http.build(); // 建立安全過濾器鏈
