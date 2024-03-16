@@ -60,6 +60,7 @@ public class QuoteService {
 		String url = "https://tw.stock.yahoo.com/quote/2330.TW";
 		// 注意：因為要掠過 SSL 驗證建議使用 jsoup 1.11.1, 之後的版本會有問題
 		Document doc = Jsoup.connect(url).validateTLSCertificates(false).get();
+		//Document doc = Jsoup.connect(url).get();
 		// 找到 <ul> 下的 <li class="price-detail-item"> 前面幾個字是 price-detail-item 的元素
 		Elements elements = doc.select("ul > li.price-detail-item");
 		//System.out.println(elements);
