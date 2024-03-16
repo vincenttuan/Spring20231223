@@ -15,24 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
-/*
-@EnableWebSecurity
-@Configuration
-public class WebSecurityConfig {
-
-    @Bean
-    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http
-            .authorizeHttpRequests((authz) -> authz
-                .anyRequest().permitAll()) // 允許所有請求
-            .csrf().disable(); // 禁用 CSRF 保護
-
-        return http.build();
-    }
-}
-*/
-
-
 @EnableWebSecurity // 啟用Spring Security
 @Configuration // 表示這是一個配置類
 public class WebSecurityConfig {
