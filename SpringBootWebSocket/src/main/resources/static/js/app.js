@@ -125,6 +125,14 @@ function cancelOrderSymbol(symbol) {
 	delete subscriptions[stockSymbol];  
 }
 
+function buyOrder(symbol, price){
+	console.log(`買進 ${symbol} 價格: ${price}`);
+}
+
+function sellOrder(symbol, price){
+	console.log(`賣出 ${symbol} 價格: ${price}`);
+}
+
 document.addEventListener("DOMContentLoaded", function() {
 	buttonConnect = document.getElementById("connect");
 	buttonDisconnect = document.getElementById("disconnect");
