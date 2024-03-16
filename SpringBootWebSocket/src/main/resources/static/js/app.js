@@ -59,7 +59,7 @@ client.onConnect = (frame) => {
 		var tx = JSON.parse(transactionReturn.body);
 		var txBody = document.getElementById('transaction-return-body');
 		var txRow = document.createElement('tr');
-		txRow.innerHTML = `<td>${tx.orderId}</td>
+		txRow.innerHTML = `<td>${tx.txId}</td>
 						   <td>${tx.status}</td>
 						   <td>${tx.time}</td>
 						   <td>${tx.cr.orderId}</td>
@@ -169,7 +169,7 @@ function createAndPublishOrder(buyOrSell, stockSymbol, stockPrice, stockAmount =
 		price: stockPrice,
 		amount: stockAmount
 	};
-	alert(JSON.stringify(order));
+	
 	console.log('下單: ' + JSON.stringify(order));
 	
 	client.publish({

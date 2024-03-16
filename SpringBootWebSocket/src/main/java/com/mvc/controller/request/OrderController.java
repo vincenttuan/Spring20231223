@@ -28,6 +28,7 @@ public class OrderController {
 	public void orderCR(Order order, Principal principal) throws Exception {
 		// principal 裡面包含 spring-security 的登入帳戶資訊
 		System.out.println("委託單: " + order);
+		order.setUsername(principal.getName());
 		// 建立委託單物件
 		String orderId = sysOrderId.incrementAndGet() + "";
 		String orderTime = LocalDateTime.now().toString();
@@ -43,8 +44,8 @@ public class OrderController {
 				// 建立成交單物件
 				String txId = sysTxId.incrementAndGet() + "";
 				String txTime = LocalDateTime.now().toString();
-				Double txPrice = order.price();
-				Integer txAmount = order.amount();
+				Double txPrice = order.getPrice();
+				Integer txAmount = order.getAmount();
 				TransactionReturn transactionReturn = new TransactionReturn(txId, "全部成交", txTime, txPrice, txAmount, commissionReturn);
 				// 設定成交回報給指定使用者
 				messagingTemplate.convertAndSendToUser(principal.getName(), "/queue/transaction-return", transactionReturn);
