@@ -46,7 +46,7 @@ public class QuoteService {
 				priceMap.get("最高"),
 				priceMap.get("成交"),
 				priceMap.get("均價"),
-				priceMap.get("成交金額"),
+				priceMap.get("成交金額(億)"),
 				priceMap.get("漲跌幅"),
 				priceMap.get("振幅"),
 				priceMap.get("開盤"),
