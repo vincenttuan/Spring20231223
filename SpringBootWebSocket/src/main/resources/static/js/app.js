@@ -117,7 +117,8 @@ function cancelOrderSymbol(symbol) {
 		quotesBody.removeChild(quoteRow);
 	}
 	
-	delete subscriptions[stockSymbol]; // 從映射中移除訂閱參考 
+	// 從映射中移除訂閱參考
+	delete subscriptions[stockSymbol];  
 }
 
 document.addEventListener("DOMContentLoaded", function() {
