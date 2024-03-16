@@ -96,8 +96,8 @@ function updateQuoteList(quote) {
 					<td>${quote.成交}</td>
 					<td>${quote.總量}</td>
 					<td style='cursor: pointer' title='按我一下可以移除' onclick='cancelOrderSymbol("${quote.symbol}")'>X</td>
-					<td style='cursor: pointer' title='按我一下可以買進' onclick='buyOrder("${quote.symbol}", ${quote.price})'>X</td>
-					<td style='cursor: pointer' title='按我一下可以賣出' onclick='sellOrder("${quote.symbol}", ${quote.price})'>X</td>`;
+					<td style='cursor: pointer' title='按我一下可以買進' onclick='buyOrder("${quote.symbol}", ${quote.price})'>買進</td>
+					<td style='cursor: pointer' title='按我一下可以賣出' onclick='sellOrder("${quote.symbol}", ${quote.price})'>賣出</td>`;
 
 }
 
